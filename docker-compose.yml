@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  db:
+    container_name: postgresQUINTOCARGO
+    image: postgres:10
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data
+    networks:
+      - compose-network
+    restart: always
+      
+  pgadmin:
+    container_name: pgadminQUINTOCARGO
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=odoo@odoo.com
+      - PGADMIN_DEFAULT_PASSWORD=odoo
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+    ports:
+      - "16543:80"
+    depends_on:
+      - db
+    networks:
+      - compose-network
+  
+  odoo:
+    container_name: odooQUINTOCARGO
+    image: odoo:14
+    depends_on:
+      - db
+    ports:
+      - "18069:8069"
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    networks:
+      - compose-network
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+
+networks: 
+  compose-network:
+    driver: bridge
