@@ -1,0 +1,8 @@
+# Archivos de Docker
+docker-compose.override.yml
+*.log
+*.pid
+__pycache__/
+.env
+# Volúmenes de Docker
+volumes/
