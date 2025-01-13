@@ -1,0 +1,6 @@
+<!-- <odoo>
+     Definir el grupo de usuarios
+    <record id="group_quintocargo_manager" model="res.groups">
+        <field name="name">QuintoCargo Manager</field>
+    </record>
+</odoo> -->

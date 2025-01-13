@@ -1,0 +1,13 @@
+<odoo>
+    <!-- Menú principal -->
+    <menuitem name="QuintoCargo" id="menu_main_quintocargo" />
+
+    <!-- Submenus agrupados -->
+    <menuitem name="Mudanzas" id="menu_mudanzas" parent="menu_main_quintocargo" action="action_mudanzas" />
+    <!--<menuitem name="Transportes" id="menu_transportes" parent="menu_main_quintocargo" /> -->
+    <!--<menuitem name="Bienes Asegurados" id="menu_bienes_asegurados" parent="menu_main_quintocargo" /> -->
+    <menuitem name="Almacen" id="menu_almacen" parent="menu_main_quintocargo" />
+    <!--<menuitem name="Clientes" id="menu_clientes" parent="menu_main_quintocargo" /> -->
+    <!--<menuitem name="Empleados" id="menu_empleados" parent="menu_main_quintocargo" /> -->
+    
+</odoo>

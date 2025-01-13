@@ -1,0 +1,25 @@
+<record id="view_almacen_form" model="ir.ui.view">
+    <field name="name">quinto_cargo.almacen.form</field>
+    <field name="model">quinto_cargo.almacen</field>
+    <field name="arch" type="xml">
+        <form string="Almacén">
+            <sheet>
+                <group>
+                    <field name="name" />
+                    <field name="direccion" />
+                    <field name="capacidad" />
+                </group>
+                <notebook>
+                    <page string="Mudanzas">
+                        <field name="mudanzas_ids">
+                            <tree>
+                                <field name="name" />
+                                <field name="fecha" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>

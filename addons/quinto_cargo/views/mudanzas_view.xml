@@ -1,0 +1,85 @@
+<odoo>
+    <!-- Vista de Lista -->
+    <record id="view_mudanza_tree" model="ir.ui.view">
+        <field name="name">quintocargo.mudanzas.tree</field>
+        <field name="model">quintocargo.mudanzas</field>
+        <field name="arch" type="xml">
+            <tree string="Mudanzas">
+                <field name="cod_mudanza" string="Código" />
+                <field name="nombre_cliente" string="Cliente" />
+                <field name="telefono_cliente" string="Teléfono" />
+                <field name="direccion_origen" string="Origen" />
+                <field name="direccion_destino" string="Destino" />
+                <field name="fecha_recogida" string="Recogida" />
+                <field name="fecha_entrega" string="Entrega" />
+                <field name="precio" string="Precio" />
+                <field name="estado" string="Estado" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de Formulario -->
+    <record id="view_mudanza_form" model="ir.ui.view">
+        <field name="name">quintocargo.mudanzas.form</field>
+        <field name="model">quintocargo.mudanzas</field>
+        <field name="arch" type="xml">
+            <form string="Mudanza">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="cod_mudanza" />
+                            <field name="nombre_cliente" />
+                            <field name="telefono_cliente" />
+                        </group>
+                        <group>
+                            <field name="direccion_origen" />
+                            <field name="direccion_destino" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="fecha_recogida" />
+                            <field name="fecha_entrega" />
+                        </group>
+                        <group>
+                            <field name="precio" />
+                            <field name="metros_cubicos_usados" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="estado" widget="statusbar" options="{'clickable': True}" />
+                    </group>
+                    <notebook>
+                        <page string="Empleados Asignados">
+                            <field name="empleados_ids" widget="many2many_tags" />
+                        </page>
+                        <page string="Bienes">
+                            <field name="bienes_ids">
+                                <tree string="Bienes">
+                                    <field name="name" string="Bien" />
+                                    <field name="descripcion" string="Descripción" />
+                                    <field name="valor" string="Valor (€)" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Almacén">
+                            <field name="almacen_id" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción de la Vista -->
+    <record id="action_mudanzas" model="ir.actions.act_window">
+        <field name="name">Mudanzas</field>
+        <field name="res_model">quintocargo.mudanzas</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes gestionar las mudanzas de QuintoCargo. Selecciona una mudanza para editarla o crea una nueva.
+            </p>
+        </field>
+    </record>
+</odoo>
