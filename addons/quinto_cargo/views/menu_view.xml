@@ -6,7 +6,7 @@
     <menuitem name="Mudanzas" id="mudanzas_menu" parent="main_quintocargo_menu" action="action_mudanzas" />
     <!--<menuitem name="Transportes" id="menu_transportes" parent="menu_main_quintocargo" /> -->
     <!--<menuitem name="Bienes Asegurados" id="menu_bienes_asegurados" parent="menu_main_quintocargo" /> -->
-    <!-- <menuitem name="Almacen" id="menu_almacen" parent="menu_main_quintocargo" /> -->
+    <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen"/>
     <!--<menuitem name="Clientes" id="menu_clientes" parent="menu_main_quintocargo" /> -->
     <!--<menuitem name="Empleados" id="menu_empleados" parent="menu_main_quintocargo" /> -->
     

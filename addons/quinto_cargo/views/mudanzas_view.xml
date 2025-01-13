@@ -18,7 +18,7 @@
         </field>
     </record>
 
-     <!-- Vista de Formulario  -->
+    <!-- Vista de Formulario  -->
     <record id="quintocargo_mudanzas_form_view" model="ir.ui.view">
         <field name="name">quintocargo.mudanzas.form</field>
         <field name="model">quintocargo.mudanzas</field>
@@ -49,8 +49,8 @@
                     <group>
                         <field name="estado" widget="statusbar" options="{'clickable': True}" />
                     </group>
-                    <!-- <notebook>
-                        <page string="Empleados Asignados">
+                    <notebook>
+                        <!-- <page string="Empleados Asignados">
                             <field name="empleados_ids" widget="many2many_tags" />
                         </page>
                         <page string="Bienes">
@@ -61,11 +61,11 @@
                                     <field name="valor" string="Valor (€)" />
                                 </tree>
                             </field>
-                        </page>
+                        </page> -->
                         <page string="Almacén">
                             <field name="almacen_id" />
                         </page>
-                    </notebook> -->
+                    </notebook>
                 </sheet>
             </form>
         </field>

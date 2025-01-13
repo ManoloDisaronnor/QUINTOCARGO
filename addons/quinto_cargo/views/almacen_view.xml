@@ -1,25 +1,52 @@
-<!-- <record id="view_almacen_form" model="ir.ui.view">
-    <field name="name">quinto_cargo.almacen.form</field>
-    <field name="model">quinto_cargo.almacen</field>
-    <field name="arch" type="xml">
-        <form string="Almacén">
-            <sheet>
-                <group>
-                    <field name="name" />
-                    <field name="direccion" />
-                    <field name="capacidad" />
-                </group>
-                <notebook>
-                    <page string="Mudanzas">
-                        <field name="mudanzas_ids">
-                            <tree>
-                                <field name="name" />
-                                <field name="fecha" />
-                            </tree>
-                        </field>
-                    </page>
-                </notebook>
-            </sheet>
-        </form>
-    </field>
-</record> -->
+<odoo>
+    <!-- Vista de Lista -->
+    <record id="quintocargo_almacen_tree_view" model="ir.ui.view">
+        <field name="name">quintocargo.almacen.form</field>
+        <field name="model">quintocargo.almacen</field>
+        <field name="arch" type="xml">
+            <tree string="Almacén">
+                <field name="nombre" />
+                <field name="direccion" />
+                <field name="capacidad" />
+            </tree>
+        </field>
+    </record>
+    <!-- Vista de Formulario  -->
+    <record id="quintocargo_almacen_form_view" model="ir.ui.view">
+        <field name="name">quintocargo.almacen.form</field>
+        <field name="model">quintocargo.almacen</field>
+        <field name="arch" type="xml">
+            <form string="Almacén">
+                <sheet>
+                    <group>
+                        <field name="nombre" />
+                        <field name="direccion" />
+                        <field name="capacidad" />
+                    </group>
+                    <notebook>
+                        <page string="Mudanzas">
+                            <field name="mudanzas_ids">
+                                <tree>
+                                    <field name="cod_mudanza" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción de la Vista -->
+    <record id="action_almacen" model="ir.actions.act_window">
+        <field name="name">Almacen</field>
+        <field name="res_model">quintocargo.almacen</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Desde aquí puedes gestionar los almacenes. Haz clic en "Crear" para añadir un nuevo
+                almacén.
+            </p>
+        </field>
+    </record>
+</odoo>
