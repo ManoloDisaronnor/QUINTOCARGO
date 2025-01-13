@@ -23,10 +23,9 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv', 
-        'views/menu_view.xml',
+        'security/ir.model.access.csv',
         'views/mudanzas_view.xml',
-        'views/almacen_view.xml',
+        'views/menu_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,13 +1,13 @@
 <odoo>
     <!-- Vista de Lista -->
-    <record id="view_mudanza_tree" model="ir.ui.view">
+    <record id="quintocargo_mudanzas_tree_view" model="ir.ui.view">
         <field name="name">quintocargo.mudanzas.tree</field>
         <field name="model">quintocargo.mudanzas</field>
         <field name="arch" type="xml">
             <tree string="Mudanzas">
                 <field name="cod_mudanza" string="Código" />
-                <field name="nombre_cliente" string="Cliente" />
-                <field name="telefono_cliente" string="Teléfono" />
+                <field name="nombre" string="Cliente" />
+                <field name="telefono" string="Teléfono" />
                 <field name="direccion_origen" string="Origen" />
                 <field name="direccion_destino" string="Destino" />
                 <field name="fecha_recogida" string="Recogida" />
@@ -18,8 +18,8 @@
         </field>
     </record>
 
-    <!-- Vista de Formulario -->
-    <record id="view_mudanza_form" model="ir.ui.view">
+     <!-- Vista de Formulario  -->
+    <record id="quintocargo_mudanzas_form_view" model="ir.ui.view">
         <field name="name">quintocargo.mudanzas.form</field>
         <field name="model">quintocargo.mudanzas</field>
         <field name="arch" type="xml">
@@ -28,8 +28,8 @@
                     <group>
                         <group>
                             <field name="cod_mudanza" />
-                            <field name="nombre_cliente" />
-                            <field name="telefono_cliente" />
+                            <field name="nombre" />
+                            <field name="telefono" />
                         </group>
                         <group>
                             <field name="direccion_origen" />
@@ -49,7 +49,7 @@
                     <group>
                         <field name="estado" widget="statusbar" options="{'clickable': True}" />
                     </group>
-                    <notebook>
+                    <!-- <notebook>
                         <page string="Empleados Asignados">
                             <field name="empleados_ids" widget="many2many_tags" />
                         </page>
@@ -65,7 +65,7 @@
                         <page string="Almacén">
                             <field name="almacen_id" />
                         </page>
-                    </notebook>
+                    </notebook> -->
                 </sheet>
             </form>
         </field>
