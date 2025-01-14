@@ -9,3 +9,4 @@ docker compose up -d
 ```
 
 Ya solo tienes que esperar que se inicie y con el puerto ***18069*** entrar en el navegador
+Una vez dentro de ***Odoo*** en el navegador solo tienes que seleccionar en el menú arriba a la derecha el modulo Mudanzas e ingresar los datos que quieras
