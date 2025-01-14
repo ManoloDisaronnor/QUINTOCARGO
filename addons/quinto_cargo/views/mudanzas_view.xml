@@ -1,5 +1,5 @@
 <odoo>
-    <!-- Vista de Lista -->
+    <!-- Vista de Lista Mudanza -->
     <record id="quintocargo_mudanzas_tree_view" model="ir.ui.view">
         <field name="name">quintocargo.mudanzas.tree</field>
         <field name="model">quintocargo.mudanzas</field>
@@ -15,6 +15,26 @@
                 <field name="precio" string="Precio" />
                 <field name="estado" string="Estado" />
             </tree>
+        </field>
+    </record>
+
+    <!-- Vista Calendario para Mudanzas -->
+    <record id="calendario_mudanzas" model="ir.ui.view">
+        <field name="name">quintocargo.mudanzas.calendar</field>
+        <field name="model">quintocargo.mudanzas</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendario de Mudanzas" date_start="fecha_recogida"
+                date_stop="fecha_entrega">
+                <field name="cod_mudanza" />
+                <field name="nombre" />
+                <!-- <field name="telefono" />
+                <field name="direccion_origen" />
+                <field name="direccion_destino" />
+                <field name="fecha_recogida" />
+                <field name="fecha_entrega" />
+                <field name="precio" /> -->
+                <field name="estado" />
+            </calendar>
         </field>
     </record>
 
@@ -50,10 +70,13 @@
                         <field name="estado" widget="statusbar" options="{'clickable': True}" />
                     </group>
                     <notebook>
-                        <!-- <page string="Empleados Asignados">
-                            <field name="empleados_ids" widget="many2many_tags" />
+                        <page string="Almacén">
+                            <field name="almacen_id" />
                         </page>
-                        <page string="Bienes">
+                        <page string="Empleados Asignados">
+                            <field name="empleado_id" />
+                        </page>
+                        <!-- <page string="Bienes">
                             <field name="bienes_ids">
                                 <tree string="Bienes">
                                     <field name="name" string="Bien" />
@@ -62,23 +85,35 @@
                                 </tree>
                             </field>
                         </page> -->
-                        <page string="Almacén">
-                            <field name="almacen_id" />
-                        </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Acción de la Vista -->
+    <!-- Action de la Vista Mudanza -->
     <record id="action_mudanzas" model="ir.actions.act_window">
         <field name="name">Mudanzas</field>
         <field name="res_model">quintocargo.mudanzas</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p>
-                Aquí puedes gestionar las mudanzas de QuintoCargo. Selecciona una mudanza para editarla o crea una nueva.
+                Aquí puedes gestionar las mudanzas de QuintoCargo. Selecciona una mudanza para
+                editarla o crea una nueva.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action de la vista Calendario -->
+    <record id="action_calendario" model="ir.actions.act_window">
+        <field name="name">Calendario de Mudanzas</field>
+        <field name="res_model">quintocargo.mudanzas</field>
+        <field name="view_mode">calendar</field>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes ver las mudanzas de QuintoCargo en un calendario. Haz clic en una
+                mudanza
+                para ver más detalles.
             </p>
         </field>
     </record>

@@ -20,7 +20,7 @@ class Mudanzas(models.Model):
     metros_cubicos_usados = fields.Float('Metros cúbicos usados', required=True)
 
     # Relación con el modelo almacen
-    #empleados_ids = fields.Many2many("quintocargo.empleados",string="Empleados asignados")
+    empleado_id = fields.Many2many("quintocargo.empleado",string="Empleados asignados")
     #cliente_id = fields.Many2one("quintocargo.clientes",string="Cliente")
     #bienes_ids = fields.One2many("quintocargo.bienes","mudanza_id",string="Bienes") # ¡¡ REVISAR !!
     almacen_id = fields.Many2one("quintocargo.almacen",string="Almacen")
