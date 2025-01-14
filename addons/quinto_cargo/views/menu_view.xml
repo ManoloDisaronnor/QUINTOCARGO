@@ -4,10 +4,10 @@
 
     <!-- Submenus agrupados -->
     <menuitem name="Mudanzas" id="mudanzas_menu" parent="main_quintocargo_menu" action="action_mudanzas" />
-    <!--<menuitem name="Transportes" id="menu_transportes" parent="menu_main_quintocargo" /> -->
-    <!--<menuitem name="Bienes Asegurados" id="menu_bienes_asegurados" parent="menu_main_quintocargo" /> -->
+    <!--<menuitem name="Transportes" id="transportes_menu" parent="main_quintocargo_menu" /> -->
+    <!--<menuitem name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu" /> -->
     <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen"/>
-    <!--<menuitem name="Clientes" id="menu_clientes" parent="menu_main_quintocargo" /> -->
-    <!--<menuitem name="Empleados" id="menu_empleados" parent="menu_main_quintocargo" /> -->
+    <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu" action="action_cliente"/>
+    <menuitem name="Empleado" id="empleado_menu" parent="main_quintocargo_menu" action="action_empleado"/>
     
 </odoo>

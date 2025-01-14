@@ -2,3 +2,6 @@
 
 from . import mudanzas
 from . import almacen
+from . import persona
+from . import cliente
+from . import empleado

@@ -1,0 +1,12 @@
+<odoo>
+    <record id="action_empleado" model="ir.actions.act_window">
+        <field name="name">Empleado</field>
+        <field name="res_model">quintocargo.empleado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes gestionar los empleados de QuintoCargo. Selecciona un empleado para editarlo o crear uno nuevo.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<odoo> 
+    <record id="action_cliente" model="ir.actions.act_window">
+        <field name="name">Cliente</field>
+        <field name="res_model">quintocargo.cliente</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes gestionar los clientes que contratan las mudanzas de QuintoCargo. Selecciona un cliente para editarlo o crea uno nuevo.
+            </p>
+        </field>
+    </record>
+</odoo>
