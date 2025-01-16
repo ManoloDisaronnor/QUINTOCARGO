@@ -91,7 +91,7 @@
         </field>
     </record>
 
-    <!-- Action de la Vista Mudanza -->
+    <!-- Action de la vista Mudanza -->
     <record id="action_mudanzas" model="ir.actions.act_window">
         <field name="name">Mudanzas</field>
         <field name="res_model">quintocargo.mudanzas</field>
