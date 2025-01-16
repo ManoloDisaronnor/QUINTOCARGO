@@ -1,0 +1,13 @@
+<odoo>
+    <record id="action_bienes_asegurados" model="ir.actions.act_window">
+        <field name="name">Bienes Asegurados</field>
+        <field name="res_model">quintocargo.bien_asegurado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes gestionar los bienes asegurados de QuintoCargo. Selecciona un bien asegurado
+                para editarlo o crea uno nuevo.
+            </p>
+        </field>
+    </record>
+</odoo>

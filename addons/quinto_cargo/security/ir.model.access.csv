@@ -4,3 +4,4 @@ access_quintocargo_almacen,quintocargo.almacen,model_quintocargo_almacen,base.gr
 access_quintocargo_persona,quintocargo.persona,model_quintocargo_persona,base.group_user,1,1,1,1
 access_quintocargo_cliente,quintocargo.cliente,model_quintocargo_cliente,base.group_user,1,1,1,1
 access_quintocargo_empleado,quintocargo.empleado,model_quintocargo_empleado,base.group_user,1,1,1,1
+access_quintocargo_bien_asegurado,quintocargo.bien_asegurado,model_quintocargo_bien_asegurado,base.group_user,1,1,1,1

@@ -10,8 +10,9 @@
         action="action_calendario" />
     <!--<menuitem
     name="Transportes" id="transportes_menu" parent="main_quintocargo_menu" /> -->
-    <!--<menuitem
-    name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu" /> -->
+    <menuitem
+    name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu"
+    action="action_bienes_asegurados" />
     <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu"
         action="action_almacen" />
     <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu"

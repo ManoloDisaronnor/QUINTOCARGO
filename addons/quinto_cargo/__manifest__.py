@@ -30,6 +30,7 @@
         'views/almacen_view.xml',
         'views/cliente_view.xml',
         'views/empleado_view.xml',
+        'views/bienes_asegurados_view.xml',
         'views/menu_view.xml',
     ],
     # only loaded in demonstration mode
