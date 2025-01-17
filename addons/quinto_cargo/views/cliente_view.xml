@@ -1,4 +1,48 @@
 <odoo> 
+    <record id="quintocargo_mudanzas_tree_view" model="ir.ui.view">
+        <field name="name">quintocargo.cliente.tree</field>
+        <field name="model">quintocargo.cliente</field>
+        <field name="arch" type="xml">
+            <tree string="Clientes">
+                <field name="foto" string="Foto" widget="image" options="{'size': [56, 56]}" align="center" />
+                <field name="dni" string="Dni" />
+                <field name="nombre" string="Nombre" />
+                <field name="apellidos" string="Apellidos" />
+                <field name="email" string="Email" />
+                <field name="telefono" string="Teléfono" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="quintocargo_mudanzas_form_view" model="ir.ui.view">
+        <field name="name">quintocargo.cliente.form</field>
+        <field name="model">quintocargo.cliente</field>
+        <field name="arch" type="xml">
+            <form string="Cliente">
+                <sheet>
+                    <group>
+                        <group style="width: 35%">
+                            <field name="foto" widget="image" options="{'size': [100, 100]}" align="center" />
+                            <field name="nombre" />
+                            <field name="apellidos" />
+                        </group>
+                        <group style="width: 65%">
+                            <field name="dni" />
+                            <field name="email" />
+                            <field name="telefono" />
+                            <field name="fecha_nacimiento" />
+                            <field name="cuenta_corriente" />
+                            <field name="direccion" />
+                        </group>
+                        <group>
+                            <field name="tipoCliente" widget="statusbar" options="{'clickable': True}" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="action_cliente" model="ir.actions.act_window">
         <field name="name">Cliente</field>
         <field name="res_model">quintocargo.cliente</field>
