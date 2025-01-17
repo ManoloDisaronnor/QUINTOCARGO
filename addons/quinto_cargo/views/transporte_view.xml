@@ -1,4 +1,43 @@
 <odoo>
+    <!-- Vista de la Lista de Transportes -->
+    <record id="quintocargo_transporte_tree_view" model="ir.ui.view">
+        <field name="name">quintocargo.transporte.tree</field>
+        <field name="model">quintocargo.transporte</field>
+        <field name="arch" type="xml">
+            <tree string="Transportes">
+                <field name="matricula" string="Matrícula"/>
+                <field name="capacidad" string="Capacidad"/>
+                <field name="tipo_vehiculo" string="Tipo de vehículo"/>
+                <field name="fecha_compra" string="Fecha de compra"/>
+                <field name="fecha_itv" string="Fecha de ITV"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de Formulario de Transportes -->
+    <record id="quintocargo_transporte_form_view" model="ir.ui.view">
+        <field name="name">quintocargo.transporte.form</field>
+        <field name="model">quintocargo.transporte</field>
+        <field name="arch" type="xml">
+            <form string="Transporte">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="matricula"/>
+                            <field name="capacidad"/>
+                            <field name="tipo_vehiculo"/>
+                        </group>
+                        <group>
+                            <field name="fecha_compra"/>
+                            <field name="fecha_itv"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción de Transportes -->
     <record id="action_transporte" model="ir.actions.act_window">
         <field name="name">Transportes</field>
         <field name="res_model">quintocargo.transporte</field>

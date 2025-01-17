@@ -21,3 +21,6 @@ class bien_asegurado(models.Model):
     dimensiones_Largo= fields.Char(string='Dimensiones Largo', required=True)
     
     imagen = fields.Binary(string='Imagen')
+
+    # Relación con el modelo mudanza
+    # mudanza_id = fields.Many2one('quintocargo.mudanzas', string='Mudanza asignada')
