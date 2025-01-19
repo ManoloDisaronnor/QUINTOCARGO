@@ -23,4 +23,4 @@ class bien_asegurado(models.Model):
     imagen = fields.Binary(string='Imagen')
 
     # Relación con el modelo mudanza
-    # mudanza_id = fields.Many2one('quintocargo.mudanzas', string='Mudanza asignada')
+    mudanza_id = fields.Many2one('quintocargo.mudanzas', string='Mudanza asignada')

@@ -1,5 +1,5 @@
 <odoo> 
-    <record id="quintocargo_mudanzas_tree_view" model="ir.ui.view">
+    <record id="quintocargo_cliente_tree_view" model="ir.ui.view">
         <field name="name">quintocargo.cliente.tree</field>
         <field name="model">quintocargo.cliente</field>
         <field name="arch" type="xml">

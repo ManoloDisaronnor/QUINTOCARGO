@@ -5,6 +5,7 @@
     <!-- Submenus agrupados -->
     <menuitem name="Mudanzas" id="mudanzas_menu" parent="main_quintocargo_menu" />
     <menuitem name="Ver Mudanzas" id="ver_mudanzas_menu" parent="mudanzas_menu" action="action_mudanzas" />
+    <menuitem name="Nueva Mudanza" id="formulario_mudanzas_menu" parent="mudanzas_menu" action="action_formulariomudanza" />
     <menuitem name="Calendario" id="calendario_mudanzas_menu" parent="mudanzas_menu" action="action_calendario" />
     <menuitem name="Transportes" id="transportes_menu" parent="main_quintocargo_menu" action="action_transporte"/>
     <menuitem name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu" action="action_bienes_asegurados" />

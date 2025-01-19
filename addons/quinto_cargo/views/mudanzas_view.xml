@@ -27,48 +27,51 @@
                 date_stop="fecha_entrega">
                 <field name="cod_mudanza" />
                 <field name="nombre" />
-                <!-- <field name="telefono" />
-                <field name="direccion_origen" />
-                <field name="direccion_destino" />
-                <field name="fecha_recogida" />
-                <field name="fecha_entrega" />
-                <field name="precio" /> -->
+                <field name="telefono" />
                 <field name="estado" />
             </calendar>
         </field>
     </record>
 
-    <!-- Vista de Formulario  -->
+    <!-- Vista de formulario para Mudanzas -->
     <record id="quintocargo_mudanzas_form_view" model="ir.ui.view">
         <field name="name">quintocargo.mudanzas.form</field>
         <field name="model">quintocargo.mudanzas</field>
         <field name="arch" type="xml">
-            <form string="Mudanza">
+            <form string="Formulario Mudanza">
                 <sheet>
                     <group>
-                        <group>
-                            <field name="cod_mudanza" />
-                            <field name="nombre" />
-                            <field name="telefono" />
-                        </group>
-                        <group>
-                            <field name="direccion_origen" />
-                            <field name="direccion_destino" />
+                        <group string="Datos del Cliente">
+                            <field name="cod_mudanza" string="Código" />
+                            <field name="nombre" string="Cliente" />
+                            <field name="telefono" string="Teléfono" />
                         </group>
                     </group>
+
                     <group>
-                        <group>
-                            <field name="fecha_recogida" />
-                            <field name="fecha_entrega" />
-                        </group>
-                        <group>
-                            <field name="precio" />
-                            <field name="metros_cubicos_usados" />
+                        <group string="Dirección de la Mudanza">
+                            <field name="direccion_origen" string="Dirección de Origen" />
+                            <field name="direccion_destino" string="Dirección de Destino" />
                         </group>
                     </group>
+
                     <group>
-                        <field name="estado" widget="statusbar" options="{'clickable': True}" />
+                        <group string="Fechas y Estado">
+                            <field name="fecha_recogida" string="Fecha de Recogida" />
+                            <field name="fecha_entrega" string="Fecha de Entrega" />
+                        </group>
+                        <group>
+                            <field name="estado" widget="statusbar" options="{'clickable': True}" />
+                        </group>
                     </group>
+
+                    <group>
+                        <group string="Detalles de la Mudanza">
+                            <field name="precio" string="Precio (€)" />
+                            <field name="metros_cubicos_usados" string="Metros Cúbicos Usados" />
+                        </group>
+                    </group>
+
                     <notebook>
                         <page string="Almacén">
                             <field name="almacen_id" />
@@ -76,26 +79,27 @@
                         <page string="Empleados Asignados">
                             <field name="empleado_id" />
                         </page>
-                        <!-- <page string="Bienes">
+                        <page string="Bienes">
                             <field name="bienes_ids">
                                 <tree string="Bienes">
-                                    <field name="name" string="Bien" />
+                                    <field name="nombre" string="Bien" />
                                     <field name="descripcion" string="Descripción" />
                                     <field name="valor" string="Valor (€)" />
                                 </tree>
                             </field>
-                        </page> -->
+                        </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
+
     <!-- Action de la vista Mudanza -->
     <record id="action_mudanzas" model="ir.actions.act_window">
         <field name="name">Mudanzas</field>
         <field name="res_model">quintocargo.mudanzas</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree</field>
         <field name="help" type="html">
             <p>
                 Aquí puedes gestionar las mudanzas de QuintoCargo. Selecciona una mudanza para
@@ -103,6 +107,21 @@
             </p>
         </field>
     </record>
+
+    <!-- Action de la vista Formulario Mudanza -->
+<record id="action_formulariomudanza" model="ir.actions.act_window">
+    <field name="name">Formulario Mudanza</field>
+    <field name="res_model">quintocargo.mudanzas</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="quintocargo_mudanzas_form_view"/>
+    <field name="target">new</field> <!-- Opcional: abre el formulario en un modal -->
+    <field name="help" type="html">
+        <p>
+            Aquí puedes crear una nueva mudanza para QuintoCargo. 
+        </p>
+    </field>
+</record>
+
 
     <!-- Action de la vista Calendario -->
     <record id="action_calendario" model="ir.actions.act_window">
