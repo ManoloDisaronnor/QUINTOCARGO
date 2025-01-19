@@ -9,6 +9,8 @@
                 <field name="nombre" string="Nombre" />
                 <field name="apellidos" string="Apellidos" />
                 <field name="email" string="Email" />
+                <field name="cuenta_corriente" string="Cuenta Corriente" />
+                <field name="tipoCliente" string="Tipo de Cliente" />
                 <field name="telefono" string="Teléfono" />
             </tree>
         </field>

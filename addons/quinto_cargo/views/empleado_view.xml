@@ -1,4 +1,54 @@
-<odoo>
+<odoo> 
+    <record id="quintocargo_empleado_tree_view" model="ir.ui.view">
+        <field name="name">quintocargo.empleado.tree</field>
+        <field name="model">quintocargo.empleado</field>
+        <field name="arch" type="xml">
+            <tree string="Empleados">
+                <field name="foto" string="Foto" widget="image" options="{'size': [56, 56]}" align="center" />
+                <field name="dni" string="Dni" />
+                <field name="nombre" string="Nombre" />
+                <field name="apellidos" string="Apellidos" />
+                <field name="email" string="Email" />
+                <field name="cuenta_corriente" string="Cuenta Corriente" />
+                <field name="cargo" string="Cargo" />
+                <field name="sueldo" string="Sueldo" />
+                <field name="telefono" string="Teléfono" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="quintocargo_mudanzas_form_view" model="ir.ui.view">
+        <field name="name">quintocargo.empleado.form</field>
+        <field name="model">quintocargo.empleado</field>
+        <field name="arch" type="xml">
+            <form string="Empleado">
+                <sheet>
+                    <group>
+                        <group style="width: 35%">
+                            <field name="foto" widget="image" options="{'size': [100, 100]}" align="center" />
+                            <field name="nombre" />
+                            <field name="apellidos" />
+                            <field name="dni" />
+                            <field name="telefono" />
+                        </group>
+                        <group style="width: 65%">
+                            <field name="email" />
+                            <field name="fecha_nacimiento" />
+                            <field name="cuenta_corriente" />
+                            <field name="fecha_contratacion" />
+                            <field name="sueldo" />
+                            <field name="horas_trabajadas" />
+                            <field name="direccion" />
+                        </group>
+                        <group>
+                            <field name="cargo" widget="statusbar" options="{'clickable': True}" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="action_empleado" model="ir.actions.act_window">
         <field name="name">Empleado</field>
         <field name="res_model">quintocargo.empleado</field>
