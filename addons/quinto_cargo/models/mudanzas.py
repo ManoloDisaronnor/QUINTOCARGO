@@ -13,10 +13,9 @@ class Mudanzas(models.Model):
     direccion_destino = fields.Char('Dirección de destino', required=True)
     precio = fields.Float('Precio', required=True)   
     estado = fields.Selection([
-        ('pendiente', 'Pendiente'),
-        ('en_curso', 'En curso'),
-        ('finalizada', 'Finalizada'),
-    ], string='Estado', required=True, default='pendiente')
+                            ('pendiente', 'Pendiente'),
+                            ('en_curso', 'En curso'),
+                            ('finalizada', 'Finalizada'),], string='Estado', required=True, default='pendiente')
     metros_cubicos_usados = fields.Float('Metros cúbicos usados', required=True)
 
     # Relación con el modelo almacen
@@ -25,3 +24,4 @@ class Mudanzas(models.Model):
     # cliente_id = fields.Many2one("quintocargo.cliente",string="Cliente")
     bienes_ids = fields.One2many("quintocargo.bien_asegurado","mudanza_id",string="Bienes")
     
+

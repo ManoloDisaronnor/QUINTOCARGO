@@ -5,12 +5,24 @@
     <!-- Submenus agrupados -->
     <menuitem name="Mudanzas" id="mudanzas_menu" parent="main_quintocargo_menu" />
     <menuitem name="Ver Mudanzas" id="ver_mudanzas_menu" parent="mudanzas_menu" action="action_mudanzas" />
-    <menuitem name="Nueva Mudanza" id="formulario_mudanzas_menu" parent="mudanzas_menu" action="action_formulariomudanza" />
     <menuitem name="Calendario" id="calendario_mudanzas_menu" parent="mudanzas_menu" action="action_calendario" />
-    <menuitem name="Transportes" id="transportes_menu" parent="main_quintocargo_menu" action="action_transporte"/>
-    <menuitem name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu" action="action_bienes_asegurados" />
-    <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen" />
-    <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu" action="action_cliente" />
-    <menuitem name="Empleado" id="empleado_menu" parent="main_quintocargo_menu" action="action_empleado" />
 
+    <!-- Transportes -->
+    <menuitem name="Transportes" id="transportes_menu" parent="main_quintocargo_menu" />
+    <menuitem name="Ver Transportes" id="ver_transportes_menu" parent="transportes_menu" action="action_transporte"/>
+    <menuitem name="Vista Gantt de Transportes" id="ver_transporte_gantt_menu" parent="transportes_menu" action="action_transporte_gantt"/>
+
+    <!-- Bienes Asegurados -->
+    <menuitem name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu" action="action_bienes_asegurados" />
+    <menuitem name="Ver Bienes" id="ver_bienes_menu" parent="bienes_asegurados_menu" action="action_bienes_asegurados"/>
+    <menuitem name="Gráficos" id="graficos_bienes_menu" parent="bienes_asegurados_menu" action="action_bienes_asegurados_graph"/>
+
+    <!-- Almacén -->
+    <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen" />
+
+    <!-- Cliente -->
+    <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu" action="action_cliente" />
+
+    <!-- Empleado -->
+    <menuitem name="Empleado" id="empleado_menu" parent="main_quintocargo_menu" action="action_empleado" />
 </odoo>

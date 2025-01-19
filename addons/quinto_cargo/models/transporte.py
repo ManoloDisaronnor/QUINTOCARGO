@@ -7,10 +7,9 @@ class transporte(models.Model):
 
     matricula = fields.Char(string='Matrícula', required=True)
     capacidad = fields.Float(string='Capacidad', required=True)
-    tipo_vehiculo = fields.Selection([ ('camion', 'Camión'), 
-                                      ('furgoneta', 'Furgoneta'),], string='Tipo de vehículo', required=True)
+    tipo_vehiculo = fields.Selection([('camion', 'Camión'), ('furgoneta', 'Furgoneta')], string='Tipo de vehículo', required=True)
     fecha_compra = fields.Date(string='Fecha de compra', required=True)
     fecha_itv = fields.Date(string='Fecha de ITV', required=True)
 
-    # Relacion con el modelo mudanza
-    # mudanza_ids = fields.Many2Many('quintocargo.mudanzas', string='Mudanza asignada')
+    # Relación con el modelo mudanza
+    mudanza_ids = fields.Many2many('quintocargo.mudanzas', string='Mudanza asignada')

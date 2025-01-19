@@ -40,8 +40,40 @@
                             <field name="imagen" />
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Mudanzas Asignadas">
+                            <field name="mudanza_id" />
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- Vista de Gráfico de Bienes Asegurados por Tipo de Bien -->
+    <record id="quintocargo_bienes_asegurados_graph_view" model="ir.ui.view">
+        <field name="name">quintocargo.bien_asegurado.graph</field>
+        <field name="model">quintocargo.bien_asegurado</field>
+        <field name="arch" type="xml">
+            <graph string="Bienes Asegurados por Tipo de Bien" type="bar">
+                <!-- Categoría por Tipo de Bien -->
+                <field name="tipo_bien" type="dimension"/>
+                <!-- Valor Total de los Bienes Asegurados -->
+                <field name="valor" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Action para la Vista de Gráfico -->
+    <record id="action_bienes_asegurados_graph" model="ir.actions.act_window">
+        <field name="name">Bienes Asegurados - Gráfico</field>
+        <field name="res_model">quintocargo.bien_asegurado</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="quintocargo_bienes_asegurados_graph_view"/>
+        <field name="help" type="html">
+            <p>
+                Aquí puedes ver la distribución de los bienes asegurados por tipo de bien y su valor total.
+            </p>
         </field>
     </record>
 
@@ -49,11 +81,11 @@
     <record id="action_bienes_asegurados" model="ir.actions.act_window">
         <field name="name">Bienes Asegurados</field>
         <field name="res_model">quintocargo.bien_asegurado</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph</field>
         <field name="help" type="html">
             <p>
                 Aquí puedes gestionar los bienes asegurados de QuintoCargo. Selecciona un bien asegurado
-                para editarlo o crea uno nuevo.
+                para editarlo, crea uno nuevo o visualiza los datos en gráfico.
             </p>
         </field>
     </record>
