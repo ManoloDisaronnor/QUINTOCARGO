@@ -10,12 +10,13 @@
     <!-- Transportes -->
     <menuitem name="Transportes" id="transportes_menu" parent="main_quintocargo_menu" />
     <menuitem name="Ver Transportes" id="ver_transportes_menu" parent="transportes_menu" action="action_transporte"/>
-    <menuitem name="Vista Gantt de Transportes" id="ver_transporte_gantt_menu" parent="transportes_menu" action="action_transporte_gantt"/>
+    <menuitem name="Gráficos de Transportes" id="graficos_transportes_menu" parent="transportes_menu" action="action_transporte_graph" />
 
     <!-- Bienes Asegurados -->
     <menuitem name="Bienes Asegurados" id="bienes_asegurados_menu" parent="main_quintocargo_menu" action="action_bienes_asegurados" />
     <menuitem name="Ver Bienes" id="ver_bienes_menu" parent="bienes_asegurados_menu" action="action_bienes_asegurados"/>
-    <menuitem name="Gráficos" id="graficos_bienes_menu" parent="bienes_asegurados_menu" action="action_bienes_asegurados_graph"/>
+    <menuitem name="Kanban de Bienes" id="kanban_bienes_menu" parent="bienes_asegurados_menu" action="action_bienes_asegurados_kanban"/>
+
 
     <!-- Almacén -->
     <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen" />

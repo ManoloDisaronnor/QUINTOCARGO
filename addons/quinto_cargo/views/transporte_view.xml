@@ -42,31 +42,34 @@
         </field>
     </record>
 
-     <!-- Vista Gantt de Transportes -->
-    <record id="view_transporte_gantt" model="ir.ui.view">
-        <field name="name">quintocargo.transporte.gantt</field>
+    <!-- Vista de Gráfico de Transportes por Tipo de Vehículo -->
+    <record id="quintocargo_transporte_graph_view" model="ir.ui.view">
+        <field name="name">quintocargo.transporte.graph</field>
         <field name="model">quintocargo.transporte</field>
         <field name="arch" type="xml">
-            <gantt string="Transportes" date_start="fecha_compra" date_stop="fecha_itv">
-                <field name="matricula" string="Matrícula"/>
-                <field name="capacidad" string="Capacidad"/>
-                <field name="tipo_vehiculo" string="Tipo de vehículo"/>
-                <field name="fecha_compra" string="Fecha de Compra" />
-                <field name="fecha_itv" string="Fecha de ITV" />
-            </gantt>
+            <graph string="Transportes por Tipo de Vehículo" type="bar">
+                <!-- Categoría por Tipo de Vehículo -->
+                <field name="tipo_vehiculo" type="dimension" />
+                <!-- Capacidad Total de los Transportes -->
+                <field name="capacidad" type="measure" />
+            </graph>
         </field>
     </record>
 
-    <!-- Acción para la vista Gantt -->
-    <record id="action_transporte_gantt" model="ir.actions.act_window">
-        <field name="name">Vista Gantt de Transportes</field>
+    <!-- Action para la Vista de Gráfico -->
+    <record id="action_transporte_graph" model="ir.actions.act_window">
+        <field name="name">Transportes - Gráfico</field>
         <field name="res_model">quintocargo.transporte</field>
-        <field name="view_mode">gantt</field>
-        <field name="view_id" ref="view_transporte_gantt"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="quintocargo_transporte_graph_view" />
         <field name="help" type="html">
-            <p>Aquí puedes gestionar y visualizar los transportes en un diagrama Gantt.</p>
+            <p>
+                Aquí puedes visualizar la distribución de los transportes por tipo de vehículo y su
+                capacidad total.
+            </p>
         </field>
     </record>
+
 
     <!-- Acción de Transportes -->
     <record id="action_transporte" model="ir.actions.act_window">
