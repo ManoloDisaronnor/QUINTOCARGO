@@ -16,7 +16,7 @@
         </field>
     </record>
 
-    <record id="quintocargo_mudanzas_form_view" model="ir.ui.view">
+    <record id="quintocargo_cliente_form_view" model="ir.ui.view">
         <field name="name">quintocargo.cliente.form</field>
         <field name="model">quintocargo.cliente</field>
         <field name="arch" type="xml">
