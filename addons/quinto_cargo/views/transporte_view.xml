@@ -70,12 +70,11 @@
         </field>
     </record>
 
-
     <!-- Acción de Transportes -->
     <record id="action_transporte" model="ir.actions.act_window">
         <field name="name">Transportes</field>
         <field name="res_model">quintocargo.transporte</field>
-        <field name="view_mode">tree,form,gantt</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p>
                 Aquí puedes gestionar los transportes de QuintoCargo. Selecciona un transporte para
