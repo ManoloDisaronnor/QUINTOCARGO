@@ -23,8 +23,7 @@
         <field name="name">quintocargo.mudanzas.calendar</field>
         <field name="model">quintocargo.mudanzas</field>
         <field name="arch" type="xml">
-            <calendar string="Calendario de Mudanzas" date_start="fecha_recogida"
-                date_stop="fecha_entrega">
+            <calendar string="Calendario de Mudanzas" date_start="fecha_recogida" date_stop="fecha_entrega">
                 <field name="cod_mudanza" />
                 <field name="nombre" />
                 <field name="telefono" />
@@ -109,18 +108,18 @@
     </record>
 
     <!-- Action de la vista Formulario Mudanza -->
-<record id="action_formulariomudanza" model="ir.actions.act_window">
-    <field name="name">Formulario Mudanza</field>
-    <field name="res_model">quintocargo.mudanzas</field>
-    <field name="view_mode">form</field>
-    <field name="view_id" ref="quintocargo_mudanzas_form_view"/>
-    <field name="target">new</field> <!-- Opcional: abre el formulario en un modal -->
-    <field name="help" type="html">
-        <p>
+    <record id="action_formulariomudanza" model="ir.actions.act_window">
+        <field name="name">Formulario Mudanza</field>
+        <field name="res_model">quintocargo.mudanzas</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="quintocargo_mudanzas_form_view"/>
+        <field name="target">new</field>        <!-- Opcional: abre el formulario en un modal -->
+        <field name="help" type="html">
+            <p>
             Aquí puedes crear una nueva mudanza para QuintoCargo. 
-        </p>
-    </field>
-</record>
+            </p>
+        </field>
+    </record>
 
 
     <!-- Action de la vista Calendario -->

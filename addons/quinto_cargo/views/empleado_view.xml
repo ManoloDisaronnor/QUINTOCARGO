@@ -1,4 +1,4 @@
-<odoo> 
+<odoo>
     <record id="quintocargo_empleado_tree_view" model="ir.ui.view">
         <field name="name">quintocargo.empleado.tree</field>
         <field name="model">quintocargo.empleado</field>
@@ -46,6 +46,66 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="quintocargo_empleado_kanban_view" model="ir.ui.view">
+        <field name="name">quintocargo.empleado.kanban</field>
+        <field name="model">quintocargo.empleado</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_card kanban_container shadow-sm rounded p-2" style="border-left: 5px solid #007bff;">
+
+                            <div class="kanban_image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%; border: 2px solid #ccc; float: left; margin-right: 10px;">
+                                <field name="foto" widget="image" class="img img-fluid" style="width: 100%; height: 100%; object-fit: fit;"/>
+                            </div>
+
+                            <div class="kanban_info" style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong class="d-block text-primary" style="font-size: 16px;">
+                                        <field name="nombre"/>
+                                        <field name="apellidos" />
+                                    </strong>
+
+                                    <!-- Detalles adicionales -->
+                                    <div class="text-muted" style="font-size: 12px;">
+                                        <div>
+                                            <field name="direccion"/>
+                                        </div>
+                                        <div>
+                                            <field name="email"/>
+                                        </div>
+                                        <div>
+                                            <field name="telefono"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección de acciones -->
+                            <div class="kanban_actions mt-4" style="display: flex; justify-content: space-between;">
+                                <button type="object" class="btn btn-sm btn-outline-primary" name="action_open">Detalles</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger" name="action_delete">Eliminar</button>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="action_empleado_kanban" model="ir.actions.act_window">
+        <field name="name">Ver empleados Kanban</field>
+        <field name="res_model">quintocargo.empleado</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="quintocargo_empleado_kanban_view" />
+        <field name="help" type="html">
+            <p>
+                Visualiza los empleados en formato Kanban.
+            </p>
         </field>
     </record>
 

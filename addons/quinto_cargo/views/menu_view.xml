@@ -27,5 +27,7 @@
     <menuitem name="Kanban de Clientes" id="kanban_cliente_menu" parent="cliente_menu" action="action_cliente_kanban" />
 
     <!-- Empleado -->
-    <menuitem name="Empleado" id="empleado_menu" parent="main_quintocargo_menu" action="action_empleado" />
+    <menuitem name="Empleado" id="empleado_menu" parent="main_quintocargo_menu" />
+    <menuitem name="Ver Empleados" id="ver_empleado_menu" parent="empleado_menu" action="action_empleado" />
+    <menuitem name="Kanban de Empleados" id="kanban_empleado_menu" parent="empleado_menu" action="action_empleado_kanban" />
 </odoo>
