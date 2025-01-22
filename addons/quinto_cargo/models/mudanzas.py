@@ -28,7 +28,7 @@ class Mudanzas(models.Model):
     # Relación con el modelo almacen
     almacen_id = fields.Many2one("quintocargo.almacen",string="Almacen")
     empleado_id = fields.Many2many("quintocargo.empleado",string="Empleados asignados")
-    # cliente_id = fields.Many2one("quintocargo.cliente",string="Cliente")
+    cliente_id = fields.Many2one("quintocargo.cliente",string="Cliente")
     bienes_ids = fields.One2many("quintocargo.bien_asegurado","mudanza_id",string="Bienes")
     
     @api.constrains('fecha_recogida', 'fecha_entrega')
