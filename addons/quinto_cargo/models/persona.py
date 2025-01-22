@@ -20,3 +20,4 @@ class persona(models.Model):
     email = fields.Char('Email', required=True, help='Introduzca su email', size = 50)
     fecha_nacimiento = fields.Date('Fecha de nacimiento', required=True, help='Introduzca su fecha de nacimiento')
     cuenta_corriente = fields.Char('Cuenta corriente', required=True, help='Introduzca su cuenta corriente', size = 24)
+    mudanza_ids = fields.One2many("quintocargo.mudanzas", "cliente_id", string="Mudanzas")

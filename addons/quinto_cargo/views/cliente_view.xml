@@ -27,6 +27,7 @@
                             <field name="foto" widget="image" options="{'size': [100, 100]}" align="center" />
                             <field name="nombre" />
                             <field name="apellidos" />
+                            <field name="tipoCliente" widget="statusbar" options="{'clickable': True}" />
                         </group>
                         <group style="width: 65%">
                             <field name="dni" />
@@ -36,10 +37,24 @@
                             <field name="cuenta_corriente" />
                             <field name="direccion" />
                         </group>
-                        <group>
-                            <field name="tipoCliente" widget="statusbar" options="{'clickable': True}" />
-                        </group>
                     </group>
+                    <notebook>
+                        <page string="Mudanzas contratadas">
+                            <field name="mudanza_ids">
+                                <tree string="Mudanzas">
+                                    <field name="cod_mudanza" string="Código" />
+                                    <field name="nombre" string="Cliente" />
+                                    <field name="telefono" string="Teléfono" />
+                                    <field name="direccion_origen" string="Origen" />
+                                    <field name="direccion_destino" string="Destino" />
+                                    <field name="fecha_recogida" string="Recogida" />
+                                    <field name="fecha_entrega" string="Entrega" />
+                                    <field name="precio" string="Precio" />
+                                    <field name="estado" string="Estado" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -66,17 +81,21 @@
                                     </strong>
 
                                     <!-- Detalles adicionales -->
-                                    <div class="text-muted" style="font-size: 12px;">
+                                    <div class="text-muted" style="font-size: 11px;">
                                         <div>
-                                            <field name="direccion"/>
+                                            <label for="direccion">Direccion: </label>
+                                            <field name="direccion" id="direccion"/>
                                         </div>
                                         <div>
-                                            <field name="email"/>
+                                            <label for="email">Email: </label>
+                                            <field name="email" id="email"/>
                                         </div>
                                         <div>
-                                            <field name="telefono"/>
+                                            <label for="telefono">Telefono: </label>
+                                            <field name="telefono" id="telefono"/>
                                         </div>
                                         <div>
+                                            <label for="tipoCliente">Tipo de Cliente: </label>
                                             <field name="tipoCliente"/>
                                         </div>
                                     </div>
@@ -85,8 +104,8 @@
 
                             <!-- Sección de acciones -->
                             <div class="kanban_actions mt-4" style="display: flex; justify-content: space-between;">
-                                <button type="object" class="btn btn-sm btn-outline-primary" name="action_open">Detalles</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger" name="action_delete">Eliminar</button>
+                                <button type="object" class="btn btn-sm btn-outline-primary" name="action_open">Perfil</button>
+                                <button type="object" class="btn btn-sm btn-outline-danger" name="action_delete" confirm="¿Seguro que deseas eliminar este cliente?">Eliminar</button>
                             </div>
                         </div>
                     </t>

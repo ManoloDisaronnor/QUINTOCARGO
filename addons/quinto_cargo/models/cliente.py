@@ -8,6 +8,7 @@ class cliente(models.Model):
     tipoCliente  = fields.Selection([('particular', 'Particular'),
                                      ('empresa', 'Empresa')], 'Tipo de cliente', required=True, default = 'empresa')
     
+    
     # Definir la acción para abrir la vista de formulario en vista Kanban
     def action_open(self):
         return {
@@ -21,7 +22,10 @@ class cliente(models.Model):
     
     # Definir la acción para eliminar un registro en vista Kanban
     def action_delete(self):
-        self.unlink()
+        for record in self:
+            record.unlink()
         return {
-            'type': 'ir.actions.act_window_close',
-        }
+        # Para cerrar la ventana emergente y recargar la pagina automaticamente
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+    }

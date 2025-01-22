@@ -18,9 +18,19 @@ class empleado(models.Model):
     def action_open(self):
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Cliente',
+            'name': 'Empleado',
             'view_mode': 'form',
-            'res_model': 'quintocargo.cliente',
+            'res_model': 'quintocargo.empleado',
             'res_id': self.id,
             'target': 'current',
         }
+    
+    # Definir la acción para eliminar un registro en vista Kanban
+    def action_delete(self):
+        for record in self:
+            record.unlink()
+        return {
+        # Para cerrar la ventana emergente y recargar la pagina automaticamente
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+    }

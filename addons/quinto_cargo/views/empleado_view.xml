@@ -39,11 +39,26 @@
                             <field name="sueldo" />
                             <field name="horas_trabajadas" />
                             <field name="direccion" />
-                        </group>
-                        <group>
                             <field name="cargo" widget="statusbar" options="{'clickable': True}" />
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Mudanzas a cargo">
+                            <field name="mudanza_ids">
+                                <tree string="Mudanzas">
+                                    <field name="cod_mudanza" string="Código" />
+                                    <field name="nombre" string="Cliente" />
+                                    <field name="telefono" string="Teléfono" />
+                                    <field name="direccion_origen" string="Origen" />
+                                    <field name="direccion_destino" string="Destino" />
+                                    <field name="fecha_recogida" string="Recogida" />
+                                    <field name="fecha_entrega" string="Entrega" />
+                                    <field name="precio" string="Precio" />
+                                    <field name="estado" string="Estado" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -56,38 +71,57 @@
             <kanban>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="o_kanban_card kanban_container shadow-sm rounded p-2" style="border-left: 5px solid #007bff;">
+                        <div class="o_kanban_card kanban_container shadow-sm rounded p-2" style="border-left: 5px solid rgb(149, 0, 255);">
 
-                            <div class="kanban_image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%; border: 2px solid #ccc; float: left; margin-right: 10px;">
-                                <field name="foto" widget="image" class="img img-fluid" style="width: 100%; height: 100%; object-fit: fit;"/>
+                            <div class="kanban_image" style="width: 100px; height: 100%; overflow: hidden; float: left; margin-right: 10px;">
+                                <field name="foto" widget="image" style="object-fit: cover;"/>
                             </div>
 
                             <div class="kanban_info" style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
                                 <div>
                                     <strong class="d-block text-primary" style="font-size: 16px;">
-                                        <field name="nombre"/>
+                                        <field name="nombre" />
                                         <field name="apellidos" />
                                     </strong>
 
                                     <!-- Detalles adicionales -->
-                                    <div class="text-muted" style="font-size: 12px;">
+                                    <div class="text-muted" style="font-size: 11px;">
                                         <div>
-                                            <field name="direccion"/>
+                                            <label for="direccion">Direccion: </label>
+                                            <field name="direccion" id="direccion"/>
                                         </div>
                                         <div>
-                                            <field name="email"/>
+                                            <label for="email">Email: </label>
+                                            <field name="email" id="email"/>
                                         </div>
                                         <div>
-                                            <field name="telefono"/>
+                                            <label for="telefono">Telefono: </label>
+                                            <field name="telefono" id="telefono"/>
+                                        </div>
+                                        <div>
+                                            <label for="cargo">Cargo: </label>
+                                            <strong>
+                                                <field name="cargo" id="cargo"/>
+                                            </strong>
+                                        </div>
+                                        <div>
+                                            <label for="sueldo">Sueldo: </label>
+                                            <field name="sueldo" id="sueldo"/>
+                                            <label for="sueldo">€</label>
+                                        </div>
+                                        <div>
+                                            <label for="horas_trabajadas">Horas trabajadas: </label>
+                                            <field name="horas_trabajadas"/>
+                                            <label for="horas_trabajadas"> h</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Sección de acciones -->
-                            <div class="kanban_actions mt-4" style="display: flex; justify-content: space-between;">
-                                <button type="object" class="btn btn-sm btn-outline-primary" name="action_open">Detalles</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger" name="action_delete">Eliminar</button>
+                            <div class="kanban_actions mt-1" style="display: flex; justify-content: space-between;">
+                                <button type="object" class="btn btn-sm btn-outline-primary" name="action_open">Perfil</button>
+                                <button type="object" class="btn btn-sm btn-outline-danger" name="action_delete" confirm="¿Seguro que deseas eliminar este empleado?">Eliminar</button>
                             </div>
                         </div>
                     </t>
