@@ -5,18 +5,16 @@
         <field name="model">quintocargo.bien_asegurado</field>
         <field name="arch" type="xml">
             <tree string="Bienes Asegurados">
+                <field name="imagen" string="Imagen" widget="image" options="{'size': [50, 50]}" />
                 <field name="nombre" string="Nombre" />
-                <field name="descripcion" string="Descripción" />
-                <field name="valor" string="Valor" />
                 <field name="tipo_bien" string="Tipo de Bien" />
-                <field name="peso" string="Peso" />
-                <field name="dimensiones_Alto" string="Dimensiones Alto" />
-                <field name="dimensiones_Ancho" string="Dimensiones Ancho" />
-                <field name="dimensiones_Largo" string="Dimensiones Largo" />
-                <field name="imagen" string="Imagen" widget="image" options="{'size': [50, 50]}"/>
+                <field name="valor" string="Valor" widget="monetary" />
+                <field name="volumen" string="Volumen (m³)" />
+                <field name="peso" string="Peso (kg)" />
             </tree>
         </field>
     </record>
+
 
     <!-- Vista de Formulario de Bienes -->
     <record id="quintocargo_bienes_asegurados_form_view" model="ir.ui.view">
@@ -26,19 +24,26 @@
             <form string="Bien Asegurado">
                 <sheet>
                     <group>
+                        <h2>Información Básica</h2>
                         <group>
                             <field name="nombre" />
-                            <field name="descripcion" />
-                            <field name="valor" />
                             <field name="tipo_bien" />
+                            <field name="valor" />
                             <field name="peso" />
                         </group>
+                    </group>
+                    <group>
+                        <h2>Dimensiones</h2>
                         <group>
                             <field name="dimensiones_Alto" />
                             <field name="dimensiones_Ancho" />
                             <field name="dimensiones_Largo" />
-                            <field name="imagen" widget="image" options="{'size': [100, 100]}"/>
+                            <field name="volumen" readonly="1" />
                         </group>
+                    </group>
+                    <group>
+                        <h2>Imagen</h2>
+                        <field name="imagen" widget="image" options="{'size': [150, 150]}" />
                     </group>
                     <notebook>
                         <page string="Mudanzas Asignadas">
@@ -58,23 +63,40 @@
             <kanban class="o_kanban_view">
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global">
-                            <div class="oe_kanban_details">
-                                <strong>
-                                    <field name="nombre" />
-                                </strong>
-                                <div>
-                                    <field name="tipo_bien" />
-                                </div>
-                                <div>
-                                    <span>Valor: <field name="valor" /></span>
-                                </div>
-                                <div>
-                                    <span>Peso: <field name="peso" /></span>
-                                </div>
+                        <div class="oe_kanban_global"
+                            style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; background-color: #f9f9f9;">
+                            <!-- Imagen en la esquina superior derecha -->
+                            <div style="position: absolute; top: 10px; right: 10px;">
+                                <img t-if="record.imagen.raw_value"
+                                    t-att-src="kanban_image('quintocargo.bien_asegurado', 'imagen', record.id)"
+                                    style="width: 100px; height: 100px; border-radius: 5px;" />
+                                <t t-if="!record.imagen.raw_value">
+                                    <span style="font-size: 12px; color: #888;">Sin imagen</span>
+                                </t>
                             </div>
-                            <div class="oe_kanban_image">
-                                <field name="imagen" widget="image" options="{'size': [75, 75]}"/>
+
+                            <!-- Nombre del Bien -->
+                            <div style="text-align: left; margin-bottom: 10px;">
+                                <h2 style="font-size: 20px; font-weight: bold; color: #333;">
+                                    <t t-esc="record.nombre.value or 'Sin nombre'" />
+                                </h2>
+                            </div>
+
+                            <!-- Información General -->
+                            <div>
+                                <strong style="color: #666;">Tipo:</strong>
+                                <span>
+                                    <t t-esc="record.tipo_bien.value or 'No definido'" />
+                                </span>
+                                <br />
+                                <strong style="color: #666;">Valor:</strong>
+                                <span><t t-esc="record.valor.raw_value or 0" /> €</span>
+                                <br />
+                                <strong style="color: #666;">Peso:</strong>
+                                <span><t t-esc="record.peso.raw_value or 0" /> kg</span>
+                                <br />
+                                <strong style="color: #666;">Volumen:</strong>
+                                <span><t t-esc="record.volumen.raw_value or 0" /> m³</span>
                             </div>
                         </div>
                     </t>
