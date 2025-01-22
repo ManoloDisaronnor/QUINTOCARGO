@@ -16,34 +16,31 @@
     </record>
 
 
-    <!-- Vista de Formulario de Bienes -->
-    <record id="quintocargo_bienes_asegurados_form_view" model="ir.ui.view">
+    <!-- Vista de Formulario de Bienes Asegurados -->
+    <record id="quintocargo_bien_asegurado_form_view" model="ir.ui.view">
         <field name="name">quintocargo.bien_asegurado.form</field>
         <field name="model">quintocargo.bien_asegurado</field>
         <field name="arch" type="xml">
             <form string="Bien Asegurado">
                 <sheet>
                     <group>
-                        <h2>Información Básica</h2>
                         <group>
                             <field name="nombre" />
-                            <field name="tipo_bien" />
+                            <field name="descripcion" />
                             <field name="valor" />
-                            <field name="peso" />
+                            <field name="tipo_bien" />
                         </group>
-                    </group>
-                    <group>
-                        <h2>Dimensiones</h2>
                         <group>
+                            <h2>Dimensiones</h2>
                             <field name="dimensiones_Alto" />
                             <field name="dimensiones_Ancho" />
                             <field name="dimensiones_Largo" />
                             <field name="volumen" readonly="1" />
                         </group>
-                    </group>
-                    <group>
-                        <h2>Imagen</h2>
-                        <field name="imagen" widget="image" options="{'size': [150, 150]}" />
+                        <group>
+                            <h2>Imagen</h2>
+                            <field name="imagen" widget="image" options="{'size': [150, 150]}" />
+                        </group>
                     </group>
                     <notebook>
                         <page string="Mudanzas Asignadas">
@@ -55,48 +52,44 @@
         </field>
     </record>
 
-    <!-- Vista Kanban-->
-    <record id="quintocargo_bienes_asegurados_kanban_view" model="ir.ui.view">
+    <!-- Vista Kanban -->
+    <record id="quintocargo_bien_asegurado_kanban_view" model="ir.ui.view">
         <field name="name">quintocargo.bien_asegurado.kanban</field>
         <field name="model">quintocargo.bien_asegurado</field>
         <field name="arch" type="xml">
-            <kanban class="o_kanban_view">
+            <kanban>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global"
-                            style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; background-color: #f9f9f9;">
-                            <!-- Imagen en la esquina superior derecha -->
-                            <div style="position: absolute; top: 10px; right: 10px;">
-                                <img t-if="record.imagen.raw_value"
-                                    t-att-src="kanban_image('quintocargo.bien_asegurado', 'imagen', record.id)"
-                                    style="width: 100px; height: 100px; border-radius: 5px;" />
-                                <t t-if="!record.imagen.raw_value">
-                                    <span style="font-size: 12px; color: #888;">Sin imagen</span>
-                                </t>
+                        <div class="o_kanban_card kanban_container shadow-lg rounded p-4"
+                            style="border-left: 5px solid #28a745; display: flex; flex-direction: column; height: 100%;">
+
+                            <!-- Imagen del Bien -->
+                            <div class="kanban_image"
+                                style="width: 120px; height: 120px; overflow: hidden; border-radius: 10px; border: 2px solid #007bff; margin-bottom: 15px;">
+                                <field name="imagen" widget="image" class="img-fluid"
+                                    style="width: 100%; height: 100%; object-fit: cover;" />
                             </div>
 
-                            <!-- Nombre del Bien -->
-                            <div style="text-align: left; margin-bottom: 10px;">
-                                <h2 style="font-size: 20px; font-weight: bold; color: #333;">
-                                    <t t-esc="record.nombre.value or 'Sin nombre'" />
-                                </h2>
-                            </div>
+                            <!-- Información del Bien -->
+                            <div style="flex-grow: 1; display: flex; flex-direction: column;">
+                                <strong class="d-block text-dark"
+                                    style="font-size: 20px; margin-bottom: 12px;">
+                                    <field name="nombre" />
+                                </strong>
 
-                            <!-- Información General -->
-                            <div>
-                                <strong style="color: #666;">Tipo:</strong>
-                                <span>
-                                    <t t-esc="record.tipo_bien.value or 'No definido'" />
-                                </span>
-                                <br />
-                                <strong style="color: #666;">Valor:</strong>
-                                <span><t t-esc="record.valor.raw_value or 0" /> €</span>
-                                <br />
-                                <strong style="color: #666;">Peso:</strong>
-                                <span><t t-esc="record.peso.raw_value or 0" /> kg</span>
-                                <br />
-                                <strong style="color: #666;">Volumen:</strong>
-                                <span><t t-esc="record.volumen.raw_value or 0" /> m³</span>
+                                <!-- Detalles adicionales -->
+                                <div class="text-muted" style="font-size: 14px;">
+                                    <div style="margin-bottom: 6px;">
+                                        <strong>Tipo:</strong>
+                                        <field name="tipo_bien" />
+                                    </div>
+                                    <div style="margin-bottom: 6px;">
+                                        <strong>Valor:</strong> <field name="valor" /> € </div>
+                                    <div style="margin-bottom: 6px;">
+                                        <strong>Peso:</strong> <field name="peso" /> kg </div>
+                                    <div>
+                                        <strong>Volumen:</strong> <field name="volumen" /> m³ </div>
+                                </div>
                             </div>
                         </div>
                     </t>
@@ -105,18 +98,20 @@
         </field>
     </record>
 
+
     <!-- Action para la Vista Kanban -->
     <record id="action_bienes_asegurados_kanban" model="ir.actions.act_window">
         <field name="name">Bienes Asegurados - Kanban</field>
         <field name="res_model">quintocargo.bien_asegurado</field>
         <field name="view_mode">kanban,tree,form</field>
-        <field name="view_id" ref="quintocargo_bienes_asegurados_kanban_view" />
+        <field name="view_id" ref="quintocargo_bien_asegurado_kanban_view" />
         <field name="help" type="html">
             <p>
                 Visualiza los bienes asegurados en formato Kanban.
             </p>
         </field>
     </record>
+
 
     <!-- Action Bienes Asegurados -->
     <record id="action_bienes_asegurados" model="ir.actions.act_window">

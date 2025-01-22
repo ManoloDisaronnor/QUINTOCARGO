@@ -1,5 +1,3 @@
-#-*-coding: utf-8-*-
-
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
@@ -7,25 +5,23 @@ class bien_asegurado(models.Model):
     _name = 'quintocargo.bien_asegurado'
     _description = 'Bien Asegurado'
     
-    nombre= fields.Char(string='Nombre', required=True)
-    descripcion= fields.Text(string='Descripción')
-    valor= fields.Float(string='Valor', required=True)
-    tipo_bien= fields.Selection([('mueble', 'Mueble'), 
-                                 ('electrodomestico', 'Electrodomestico'),
+    nombre = fields.Char(string='Nombre', required=True)
+    descripcion = fields.Text(string='Descripción')
+    valor = fields.Float(string='Valor', required=True)
+    tipo_bien = fields.Selection([('mueble', 'Mueble'), 
+                                 ('electrodomestico', 'Electrodoméstico'),
                                  ('arte', 'Arte'),
                                  ('inmueble', 'Inmueble')], 
                                 string='Tipo de Bien', default='Mueble', required=True)
     
-    peso= fields.Float(string='Peso', required=True)
-    dimensiones_Alto= fields.Char(string='Dimensiones Alto', required=True)
-    dimensiones_Ancho= fields.Char(string='Dimensiones Ancho', required=True)
-    dimensiones_Largo= fields.Char(string='Dimensiones Largo', required=True)
+    peso = fields.Float(string='Peso', required=True)
+    dimensiones_Alto = fields.Float(string='Dimensiones Alto', required=True)
+    dimensiones_Ancho = fields.Float(string='Dimensiones Ancho', required=True)
+    dimensiones_Largo = fields.Float(string='Dimensiones Largo', required=True)
     
     imagen = fields.Binary(string='Imagen')
     
     volumen = fields.Float(string='Volumen (cm³)', compute='_compute_volumen', store=True)
-
-    
 
     # Relación con el modelo mudanza
     mudanza_id = fields.Many2one('quintocargo.mudanzas', string='Mudanza asignada')
@@ -59,5 +55,3 @@ class bien_asegurado(models.Model):
                 record.volumen = alto * ancho * largo
             except (ValueError, TypeError):
                 record.volumen = 0.0
-
-    

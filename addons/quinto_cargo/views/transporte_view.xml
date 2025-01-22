@@ -15,6 +15,7 @@
                         <group>
                             <field name="fecha_compra" />
                             <field name="fecha_itv" />
+                            <field name="estado_transporte" />
                         </group>
                     </group>
                     <notebook>
@@ -27,6 +28,7 @@
         </field>
     </record>
 
+
     <!-- Vista de Lista de Transportes -->
     <record id="quintocargo_transporte_tree_view" model="ir.ui.view">
         <field name="name">quintocargo.transporte.tree</field>
@@ -38,9 +40,11 @@
                 <field name="tipo_vehiculo" string="Tipo de vehículo" />
                 <field name="fecha_compra" string="Fecha de compra" />
                 <field name="fecha_itv" string="Fecha de ITV" />
+                <field name="estado_transporte" string="Estado" /> <!-- Añadir estado -->
             </tree>
         </field>
     </record>
+
 
     <!-- Vista de Gráfico de Transportes por Tipo de Vehículo -->
     <record id="quintocargo_transporte_graph_view" model="ir.ui.view">
