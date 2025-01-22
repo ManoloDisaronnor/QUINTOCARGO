@@ -22,7 +22,9 @@
     <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen" />
 
     <!-- Cliente -->
-    <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu" action="action_cliente" />
+    <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu" />
+    <menuitem name="Ver Clientes" id="ver_cliente_menu" parent="cliente_menu" action="action_cliente" />
+    <menuitem name="Kanban de Clientes" id="kanban_cliente_menu" parent="cliente_menu" action="action_cliente_kanban" />
 
     <!-- Empleado -->
     <menuitem name="Empleado" id="empleado_menu" parent="main_quintocargo_menu" action="action_empleado" />

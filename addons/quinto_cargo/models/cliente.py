@@ -7,3 +7,21 @@ class cliente(models.Model):
 
     tipoCliente  = fields.Selection([('particular', 'Particular'),
                                      ('empresa', 'Empresa')], 'Tipo de cliente', required=True, default = 'empresa')
+    
+    # Definir la acción para abrir la vista de formulario en vista Kanban
+    def action_open(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Cliente',
+            'view_mode': 'form',
+            'res_model': 'quintocargo.cliente',
+            'res_id': self.id,
+            'target': 'current',
+        }
+    
+    # Definir la acción para eliminar un registro en vista Kanban
+    def action_delete(self):
+        self.unlink()
+        return {
+            'type': 'ir.actions.act_window_close',
+        }
