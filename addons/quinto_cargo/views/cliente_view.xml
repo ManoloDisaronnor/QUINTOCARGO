@@ -16,6 +16,28 @@
         </field>
     </record>
 
+    <record id="quintocargo_cliente_search_view" model="ir.ui.view">
+        <field name="name">quintocargo.cliente.search</field>
+        <field name="model">quintocargo.cliente</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Clientes">
+                <field name="dni" string="DNI"/>
+                <field name="nombre" string="Nombre"/>
+                <field name="apellidos" string="Apellidos"/>
+                <field name="email" string="Email"/>
+                <field name="cuenta_corriente" string="Cuenta Corriente"/>
+                <field name="tipoCliente" string="Tipo de Cliente"/>
+
+                <filter string="Clientes Particular" name="particular" domain="[('tipoCliente', '=', 'particular')]"/>
+                <filter string="Clientes Empresa" name="empresa" domain="[('tipoCliente', '=', 'empresa')]"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter string="Tipo de Cliente" name="group_tipo" domain="[]" context="{'group_by': 'tipoCliente'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="quintocargo_cliente_form_view" model="ir.ui.view">
         <field name="name">quintocargo.cliente.form</field>
         <field name="model">quintocargo.cliente</field>
@@ -70,7 +92,7 @@
                         <div class="o_kanban_card kanban_container shadow-sm rounded p-2" style="border-left: 5px solid #007bff;">
 
                             <div class="kanban_image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%; border: 2px solid #ccc; float: left; margin-right: 10px;">
-                                <field name="foto" widget="image" class="img img-fluid" style="width: 100%; height: 100%; object-fit: cover;"/>
+                                <field name="foto" widget="image" options="{'size': [100, 100]}" style="object-fit: cover;"/>
                             </div>
 
                             <div class="kanban_info" style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
@@ -118,7 +140,7 @@
     <record id="action_cliente_kanban" model="ir.actions.act_window">
         <field name="name">Ver clientes Kanban</field>
         <field name="res_model">quintocargo.cliente</field>
-        <field name="view_mode">kanban</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="quintocargo_cliente_kanban_view" />
         <field name="help" type="html">
             <p>
@@ -136,5 +158,6 @@
                 Aquí puedes gestionar los clientes que contratan las mudanzas de QuintoCargo. Selecciona un cliente para editarlo o crea uno nuevo.
             </p>
         </field>
+        <field name="context">{}</field>
     </record>
 </odoo>

@@ -17,6 +17,29 @@
         </field>
     </record>
 
+    <record id="quintocargo_empleado_search_view" model="ir.ui.view">
+        <field name="name">quintocargo.empleado.search</field>
+        <field name="model">quintocargo.empleado</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Empleados">
+                <field name="dni" string="DNI"/>
+                <field name="nombre" string="Nombre"/>
+                <field name="apellidos" string="Apellidos"/>
+                <field name="email" string="Email"/>
+                <field name="cuenta_corriente" string="Cuenta Corriente"/>
+                <field name="cargo" string="Cargo"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_cargo" string="Cargo" domain="[]" context="{'group_by': 'cargo'}"/>
+                    <filter name="group_sueldo_0_20k" string="Sueldo: 0 - 20,000€" domain="[('sueldo', '&gt;', 0), ('sueldo', '&lt;=', 20000)]"/>
+                    <filter name="group_sueldo_20k_50k" string="Sueldo: 20,000 - 50,000€" domain="[('sueldo', '&gt;', 20000), ('sueldo', '&lt;=', 50000)]"/>
+                    <filter name="group_sueldo_50k_99k" string="Sueldo: 50,000 - 99,999€" domain="[('sueldo', '&gt;', 50000), ('sueldo', '&lt;=', 99999)]"/>
+                    <filter name="group_sueldo_100k" string="Sueldo: Más de 100,000€" domain="[('sueldo', '&gt;', 100000)]"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="quintocargo_empleado_form_view" model="ir.ui.view">
         <field name="name">quintocargo.empleado.form</field>
         <field name="model">quintocargo.empleado</field>
@@ -74,7 +97,7 @@
                         <div class="o_kanban_card kanban_container shadow-sm rounded p-2" style="border-left: 5px solid rgb(149, 0, 255);">
 
                             <div class="kanban_image" style="width: 100px; height: 100%; overflow: hidden; float: left; margin-right: 10px;">
-                                <field name="foto" widget="image" style="object-fit: cover;"/>
+                                <field name="foto" widget="image" options="{'size': [100, 300]}"/>
                             </div>
 
                             <div class="kanban_info" style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
@@ -134,7 +157,7 @@
     <record id="action_empleado_kanban" model="ir.actions.act_window">
         <field name="name">Ver empleados Kanban</field>
         <field name="res_model">quintocargo.empleado</field>
-        <field name="view_mode">kanban</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="quintocargo_empleado_kanban_view" />
         <field name="help" type="html">
             <p>
@@ -152,5 +175,6 @@
                 Aquí puedes gestionar los empleados de QuintoCargo. Selecciona un empleado para editarlo o crear uno nuevo.
             </p>
         </field>
+        <field name="context">{}</field>
     </record>
 </odoo>
