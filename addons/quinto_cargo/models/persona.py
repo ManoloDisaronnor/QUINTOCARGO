@@ -18,15 +18,15 @@ class persona(models.Model):
     foto = fields.Binary('Foto', help='Introduzca su foto', required=True, default=get_default_img())
     nombre = fields.Char('Nombre', required=True, help='Introduzca su nombre', size = 25)
     apellidos = fields.Char('Apellidos', required=True, help='Introduzca sus apellidos', size = 50)
-    direccion = fields.Char('Dirección', help='Introduzca su dirección', size = 60)
+    direccion = fields.Char('Dirección', help='Introduzca su dirección', size=60)
     telefono = fields.Integer('Teléfono', required=True, help='Introduzca su teléfono')
     email = fields.Char('Email', required=True, help='Introduzca su email', size = 50)
     fecha_nacimiento = fields.Date('Fecha de nacimiento', required=True, help='Introduzca su fecha de nacimiento')
     cuenta_corriente = fields.Char('Cuenta corriente', required=True, help='Introduzca su cuenta corriente', size = 24)
     mudanza_ids = fields.One2many("quintocargo.mudanzas", "cliente_id", string="Mudanzas")
 
-    @api.constrains('telefono')
-    def _check_telefono(self):
-        if self.telefono:
-            if not re.fullmatch(r"[67]\d{8}", self.telefono):
-                raise ValidationError("El número de teléfono debe comenzar con 6 o 7 y tener 9 dígitos.")
+    # @api.constrains('telefono')
+    # def _check_telefono(self):
+    #     if self.telefono:
+    #         if not re.fullmatch(r"[67]\d{8}", self.telefono):
+    #             raise ValidationError("El número de teléfono debe comenzar con 6 o 7 y tener 9 dígitos.")
