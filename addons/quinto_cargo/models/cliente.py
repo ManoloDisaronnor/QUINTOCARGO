@@ -32,13 +32,19 @@ class cliente(models.Model):
         'tag': 'reload',
     }
 
-    # 📌 RESTRICCIÓN PARA EVITAR INSERTAR MUDANZAS FINALIZADAS
-    @api.constrains('mudanza_ids')
-    def _check_mudanza_finalizada(self):
-        for record in self:
-            for mudanza in record.mudanza_ids:
-                if mudanza.estado == 'finalizada':
-                    raise ValidationError(f'❌ No puedes añadir una mudanza con estado "Finalizada" a {record.display_name}.')
+    # RESTRICCIÓN PARA EVITAR INSERTAR MUDANZAS FINALIZADAS
+    @api.onchange('mudanza_ids')
+    def _onchange_mudanza_finalizada(self):
+        for mudanza in self.mudanza_ids:
+            if mudanza.estado == 'finalizada':
+                self.mudanza_ids -= mudanza  # Elimina la selección de la mudanza "finalizada"
+                return {
+                    'warning': {
+                        'title': "⚠️ No permitido",
+                        'message': f'No puedes seleccionar la mudanza "{mudanza.nombre}" porque está finalizada.',
+                        'type': 'warning',
+                    }
+                }
 
     # CÁLCULO DEL NÚMERO TOTAL DE MUDANZAS QUE HA HECHO UN CLIENTE
     @api.depends('mudanza_ids')
