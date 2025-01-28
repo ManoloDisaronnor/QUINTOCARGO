@@ -91,19 +91,19 @@
                     <t t-name="kanban-box">
                         <div class="o_kanban_card kanban_container shadow-sm rounded p-2" style="border-left: 5px solid #007bff;">
 
-                            <div class="kanban_image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%; border: 2px solid #ccc; float: left; margin-right: 10px;">
-                                <field name="foto" widget="image" options="{'size': [100, 100]}" style="object-fit: cover;"/>
+                            <div class="kanban_image" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; border: 2px solid #ccc; float: left; margin-right: 10px;">
+                                <field name="foto" widget="image" options="{'size': [120, 120]}"/>
                             </div>
 
                             <div class="kanban_info" style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
                                 <div>
                                     <strong class="d-block text-primary" style="font-size: 16px;">
-                                        <field name="nombre"/>
-                                        <field name="apellidos" />
+                                        <field name="display_name"/>
+                                        <field name="edad" />
                                     </strong>
 
                                     <!-- Detalles adicionales -->
-                                    <div class="text-muted" style="font-size: 11px;">
+                                    <div class="text-muted" style="font-size: 10px;">
                                         <div>
                                             <label for="direccion">Direccion: </label>
                                             <field name="direccion" id="direccion"/>
@@ -119,6 +119,10 @@
                                         <div>
                                             <label for="tipoCliente">Tipo de Cliente: </label>
                                             <field name="tipoCliente"/>
+                                        </div>
+                                        <div>
+                                            <label for="total_mudanzas">Mudanzas realizadas: </label>
+                                            <field name="total_mudanzas"/>
                                         </div>
                                     </div>
                                 </div>

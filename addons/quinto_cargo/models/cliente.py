@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class cliente(models.Model):
     _inherit = 'quintocargo.persona'
@@ -7,6 +8,7 @@ class cliente(models.Model):
 
     tipoCliente  = fields.Selection([('particular', 'Particular'),
                                      ('empresa', 'Empresa')], 'Tipo de cliente', required=True, default = 'empresa')
+    mudanza_ids = fields.One2many("quintocargo.mudanzas", "cliente_id", string="Mudanzas")
     
     
     # Definir la acción para abrir la vista de formulario en vista Kanban
@@ -29,3 +31,17 @@ class cliente(models.Model):
         'type': 'ir.actions.client',
         'tag': 'reload',
     }
+
+    # 📌 RESTRICCIÓN PARA EVITAR INSERTAR MUDANZAS FINALIZADAS
+    @api.constrains('mudanza_ids')
+    def _check_mudanza_finalizada(self):
+        for record in self:
+            for mudanza in record.mudanza_ids:
+                if mudanza.estado == 'finalizada':
+                    raise ValidationError(f'❌ No puedes añadir una mudanza con estado "Finalizada" a {record.display_name}.')
+
+    # CÁLCULO DEL NÚMERO TOTAL DE MUDANZAS QUE HA HECHO UN CLIENTE
+    @api.depends('mudanza_ids')
+    def _compute_total_mudanzas(self):
+        for record in self:
+            record.total_mudanzas = len(record.mudanza_ids)

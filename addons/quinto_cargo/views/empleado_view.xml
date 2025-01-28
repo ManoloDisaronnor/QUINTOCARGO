@@ -103,8 +103,8 @@
                             <div class="kanban_info" style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
                                 <div>
                                     <strong class="d-block text-primary" style="font-size: 16px;">
-                                        <field name="nombre" />
-                                        <field name="apellidos" />
+                                        <field name="display_name" />
+                                        <field name="edad" />
                                     </strong>
 
                                     <!-- Detalles adicionales -->
@@ -136,6 +136,10 @@
                                             <label for="horas_trabajadas">Horas trabajadas: </label>
                                             <field name="horas_trabajadas"/>
                                             <label for="horas_trabajadas"> h</label>
+                                        </div>
+                                        <div>
+                                            <label for="total_mudanzas">Mudanzas realizadas: </label>
+                                            <field name="total_mudanzas"/>
                                         </div>
                                     </div>
                                 </div>
