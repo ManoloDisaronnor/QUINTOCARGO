@@ -43,6 +43,9 @@
         <field name="model">quintocargo.cliente</field>
         <field name="arch" type="xml">
             <form string="Cliente">
+                <header>
+                    <button name="%(action_report_cliente)d" type="action" string="Imprimir Reporte" class="btn-primary"/>
+                </header>
                 <sheet>
                     <group>
                         <group style="width: 35%">

@@ -1,0 +1,20 @@
+<odoo>
+    <template id="report_layout">
+        <t t-call="web.html_container">
+            <div class="header">
+                <h2>MARGEN</h2>
+                <p>ESTO ES UN INFORME AUTOGENERADO DE Transportes Quinto Cargo | Teléfono: +34 600 700 800</p>
+            </div>
+            <div class="main-content">
+                <t t-raw="0"/>
+                <!-- Aquí irá el contenido del informe -->
+            </div>
+            <div class="footer" style="text-align: center; border-top: 1px solid #ccc;">
+                <p style="margin: 5px 0;">Página <span class="page"/>de <span class="topage"/> | Generado el: <span t-esc="time.strftime('%d/%m/%Y')"/></p>
+                <p style="margin: 0;">
+                    www.quintocargo.com - info@quintocargo.com
+                </p>
+            </div>
+        </t>
+    </template>
+</odoo>

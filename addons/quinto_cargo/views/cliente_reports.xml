@@ -1,0 +1,133 @@
+<odoo>
+    <template id="report_cliente_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="cliente">
+                <t t-call="quinto_cargo.report_layout">
+                    <div class="page">
+                        <h2 class="text-center">Reporte del Cliente</h2>
+                        <div class="text-center mb-3">
+                            <img t-if="cliente.foto" t-att-src="'data:image/png;base64,' + cliente.foto.decode('utf-8')" style="max-width: 250px;" />
+                            <p t-if="not cliente.foto">
+                                <i>Sin imagen de perfil</i>
+                            </p>
+                        </div>
+                        <h3>Datos Personales</h3>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Nombre Completo</th>
+                                <td>
+                                    <t t-esc="cliente.display_name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>DNI</th>
+                                <td>
+                                    <t t-esc="cliente.dni"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Fecha de Nacimiento</th>
+                                <td>
+                                    <t t-esc="cliente.fecha_nacimiento"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Edad</th>
+                                <td>
+                                    <t t-esc="cliente.edad"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td>
+                                    <t t-esc="cliente.direccion or 'No especificado'"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td>
+                                    <t t-esc="cliente.telefono"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>
+                                    <t t-esc="cliente.email"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Cuenta Corriente</th>
+                                <td>
+                                    <t t-esc="cliente.cuenta_corriente"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <h3>Datos del Cliente</h3>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Tipo de Cliente</th>
+                                <td>
+                                    <t t-esc="dict(particular='Particular', empresa='Empresa')[cliente.tipoCliente]"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Total de Mudanzas</th>
+                                <td>
+                                    <t t-esc="cliente.total_mudanzas"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <h3>Mudanzas Asociadas</h3>
+                        <table class="table table-bordered">
+                            <t t-if="cliente.mudanza_ids">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Estado</th>
+                                    <th>Fecha recogida</th>
+                                    <th>Fecha entrega</th>
+                                    <th>Dirección origen</th>
+                                    <th>Dirección destino</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </t>
+                            <t t-foreach="cliente.mudanza_ids" t-as="mudanza">
+                                <tr>
+                                    <td>
+                                        <t t-esc="mudanza.nombre"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.estado"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.fecha_recogida"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.fecha_entrega"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.direccion_origen"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.direccion_destino"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.precio"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="not cliente.mudanza_ids">
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        <i>Sin mudanzas registradas</i>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report id="action_report_cliente" model="quintocargo.cliente" string="Reporte de Cliente" report_type="qweb-pdf" name="quinto_cargo.report_cliente_template" file="quinto_cargo.report_cliente_template" print_report_name="'Cliente - %s' % (object.display_name)" />
+</odoo>

@@ -28,6 +28,8 @@
         'security/ir.model.access.csv',
         'views/mudanzas_view.xml',
         'views/almacen_view.xml',
+        'views/report_layout.xml',
+        'views/cliente_reports.xml',
         'views/cliente_view.xml',
         'views/empleado_view.xml',
         'views/bienes_asegurados_view.xml',
