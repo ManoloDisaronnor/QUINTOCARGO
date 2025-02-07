@@ -61,40 +61,44 @@
             <kanban>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="o_kanban_card kanban_container shadow-lg rounded p-4"
-                            style="border-left: 5px solid #28a745; display: flex; flex-direction: column; height: 100%;">
+                        <div class="o_kanban_card kanban_container shadow-sm rounded p-3" style="display: flex; align-items: center; width: 350px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #28a745;">
 
-                            <!-- Imagen del Bien -->
-                            <div class="kanban_image"
-                                style="width: 120px; height: 120px; overflow: hidden; border-radius: 10px; border: 2px solid #007bff; margin-bottom: 15px;">
-                                <field name="imagen" widget="image" class="img-fluid"
-                                    style="width: 100%; height: 100%; object-fit: cover;" />
+                            <!-- Imagen del Bien (Izquierda) -->
+                            <div class="kanban_image" style="width: 80px; height: 80px; overflow: hidden; border-radius: 8px; border: 2px solid #007bff; flex-shrink: 0;">
+                                <field name="imagen" widget="image" style="width: 100%; height: 100%; object-fit: cover;" />
                             </div>
 
-                            <!-- Información del Bien -->
-                            <div style="flex-grow: 1; display: flex; flex-direction: column;">
-                                <strong class="d-block text-dark"
-                                    style="font-size: 20px; margin-bottom: 12px;">
+                            <!-- Información del Bien (Derecha) -->
+                            <div class="ml-3" style="flex-grow: 1;">
+                                <strong class="d-block text-dark" style="font-size: 16px;">
                                     <field name="nombre" />
                                 </strong>
 
-                                <!-- Detalles adicionales -->
-                                <div class="text-muted" style="font-size: 14px;">
-                                    <div style="margin-bottom: 6px;">
+                                <div class="text-muted" style="font-size: 13px;">
+                                    <div>
                                         <strong>Tipo:</strong>
                                         <field name="tipo_bien" />
                                     </div>
-                                    <div style="margin-bottom: 6px;">
-                                        <strong>Valor:</strong> <field name="valor" /> € </div>
-                                    <div style="margin-bottom: 6px;">
-                                        <strong>Peso:</strong> <field name="peso" /> kg </div>
                                     <div>
-                                        <strong>Volumen:</strong> <field name="volumen" /> m³ </div>
+                                        <strong>Valor:</strong>
+                                        <field name="valor" />
+ €</div>
+                                    <div>
+                                        <strong>Peso:</strong>
+                                        <field name="peso" />
+ kg</div>
+                                    <div>
+                                        <strong>Volumen:</strong>
+                                        <field name="volumen" />
+ m³</div>
                                 </div>
-
-                                <div class="kanban_actions mt-4" style="display: flex; justify-content: space-between;">
-                                <button type="object" class="btn btn-sm btn-outline-danger" name="action_delete" confirm="¿Seguro que deseas eliminar este bien?">Eliminar</button>
                             </div>
+
+                            <!-- Botón de acción (Derecha Abajo) -->
+                            <div class="kanban_actions ml-3">
+                                <button type="object" class="btn btn-sm btn-outline-danger" name="action_delete" confirm="¿Seguro que deseas eliminar este bien?" style="padding: 5px 10px; font-size: 12px;">
+                                Eliminar
+                                </button>
                             </div>
                         </div>
                     </t>
@@ -102,6 +106,8 @@
             </kanban>
         </field>
     </record>
+
+
 
 
     <!-- Action para la Vista Kanban -->
