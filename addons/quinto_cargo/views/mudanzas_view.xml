@@ -1,4 +1,3 @@
-
 <odoo>
     <!-- Vista de Lista Mudanza -->
     <record id="quintocargo_mudanzas_tree_view" model="ir.ui.view">
@@ -6,7 +5,7 @@
         <field name="model">quintocargo.mudanzas</field>
         <field name="arch" type="xml">
             <tree string="Mudanzas">
-                <field name="cod_mudanza" string="Código" />
+                <field name="cod_mudanza" string="Código"/>
                 <field name="nombre" string="Cliente" />
                 <field name="telefono" string="Teléfono" />
                 <field name="direccion_origen" string="Origen" />
@@ -16,6 +15,11 @@
                 <field name="precio" string="Precio" />
                 <field name="estado" string="Estado" />
                 <field name="comentario" string="Comentario" />
+                <!-- Botones en la vista de lista -->
+                <button name="action_borrar_mudanza" type="object" string="Borrar"
+                    class="oe_highlight" />
+                <button name="action_finalizar_mudanza" type="object" string="Finalizar"
+                    class="oe_highlight" />
             </tree>
         </field>
     </record>
@@ -59,6 +63,7 @@
                         </group>
                         <group>
                             <field name="almacen_id" string="Almacén Asociado" />
+                            <field name="cliente_id" string="Cliente Asociado" />
                         </group>
                     </group>
 
@@ -101,8 +106,11 @@
                         <page string="Almacén">
                             <field name="almacen_id" />
                         </page>
+                        <page string="Cliente">
+                            <field name="cliente_id" />
+                        </page>
                         <page string="Empleados Asignados">
-                            <field name="empleado_id" widget="many2many_tags" />
+                            <field name="empleado_ids" widget="many2many_tags"/>
                         </page>
                         <page string="Bienes Transportados">
                             <field name="bienes_ids">

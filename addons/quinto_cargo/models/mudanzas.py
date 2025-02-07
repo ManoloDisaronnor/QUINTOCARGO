@@ -27,12 +27,13 @@ class Mudanzas(models.Model):
 
     # Relación con el modelo almacen
     almacen_id = fields.Many2one("quintocargo.almacen",string="Almacen")
-    empleado_id = fields.Many2many("quintocargo.empleado",string="Empleados asignados")
+    empleado_ids = fields.Many2many("quintocargo.empleado",string="Empleados asignados")
     cliente_id = fields.Many2one("quintocargo.cliente",string="Cliente")
     bienes_ids = fields.One2many("quintocargo.bien_asegurado","mudanza_id",string="Bienes")
     
-    @api.constrains('fecha_recogida', 'fecha_entrega')
-    def _check_fechas(self):
+    @api.onchange('fecha_recogida', 'fecha_entrega')
+    def _onchange_fechas(self):
+        """ Valida las fechas cuando se modifican """
         for record in self:
             if record.fecha_recogida and record.fecha_entrega:
                 if record.fecha_recogida > record.fecha_entrega:
@@ -40,16 +41,16 @@ class Mudanzas(models.Model):
                         "La fecha de recogida no puede ser posterior a la fecha de entrega. "
                         "Por favor, verifica las fechas ingresadas."
                     )
-                if record.fecha_recogida < fields.Datetime.now() or record.fecha_entrega < fields.Datetime.now():
-                    # Comprueba que ni la fecha de recogida ni la fecha de entrega sea posterior a la fecha actual
+                if record.fecha_recogida < fields.Datetime.now():
                     raise ValidationError(
                         "La fecha de recogida no puede estar en el pasado."
                     )
-    
     # Método para borrar mudanza
     def action_borrar_mudanza(self):
         """ Borrar la mudanza seleccionada """
         for record in self:
+            if record.estado != 'finalizada':
+                raise ValidationError("Solo puedes eliminar mudanzas que estén en estado 'Finalizada'.")
             record.unlink()
 
     # Método para cambiar estado a 'finalizada'

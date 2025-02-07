@@ -62,7 +62,7 @@
                     </group>
                     <notebook>
                         <page string="Mudanzas contratadas">
-                            <field name="mudanza_ids">
+                            <field name="mudanza_ids" readonly="1">
                                 <tree string="Mudanzas">
                                     <field name="cod_mudanza" string="Código" />
                                     <field name="nombre" string="Cliente" />
