@@ -29,6 +29,7 @@
                             <field name="descripcion" />
                             <field name="valor" />
                             <field name="tipo_bien" />
+                            <field name="peso" />
                         </group>
                         <group>
                             <h2>Dimensiones</h2>
@@ -90,6 +91,10 @@
                                     <div>
                                         <strong>Volumen:</strong> <field name="volumen" /> m³ </div>
                                 </div>
+
+                                <div class="kanban_actions mt-4" style="display: flex; justify-content: space-between;">
+                                <button type="object" class="btn btn-sm btn-outline-danger" name="action_delete" confirm="¿Seguro que deseas eliminar este bien?">Eliminar</button>
+                            </div>
                             </div>
                         </div>
                     </t>

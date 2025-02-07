@@ -55,3 +55,9 @@ class bien_asegurado(models.Model):
                 record.volumen = alto * ancho * largo
             except (ValueError, TypeError):
                 record.volumen = 0.0
+
+    def action_delete(self):
+        for record in self:
+            record.unlink()
+        return {'type': 'ir.actions.act_window', 'res_model': 'quintocargo.bien_asegurado', 'view_mode': 'tree'}
+
