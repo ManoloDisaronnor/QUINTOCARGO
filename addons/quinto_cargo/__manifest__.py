@@ -27,6 +27,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/mudanzas_view.xml',
+        'views/mudanzas_reports.xml',
         'views/almacen_view.xml',
         'views/report_layout.xml',
         'views/cliente_reports.xml',

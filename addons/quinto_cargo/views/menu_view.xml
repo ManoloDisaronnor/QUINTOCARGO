@@ -2,7 +2,7 @@
     <!-- Menú principal -->
     <menuitem name="QuintoCargo" id="main_quintocargo_menu" />
 
-    <!-- Submenus agrupados -->
+    <!-- Mudanzas -->
     <menuitem name="Mudanzas" id="mudanzas_menu" parent="main_quintocargo_menu" />
     <menuitem name="Ver Mudanzas" id="ver_mudanzas_menu" parent="mudanzas_menu" action="action_mudanzas" />
     <menuitem name="Calendario" id="calendario_mudanzas_menu" parent="mudanzas_menu" action="action_calendario" />
@@ -19,7 +19,9 @@
 
 
     <!-- Almacén -->
-    <menuitem name="Almacen" id="menu_almacen" parent="main_quintocargo_menu" action="action_almacen" />
+    <menuitem name="Almacen" id="almacen_menu" parent="main_quintocargo_menu" />
+    <menuitem name="Ver Almacenes" id="ver_almacenes_menu" parent="almacen_menu" action="action_almacen" />
+    <menuitem name="Kanban de Almacenes" id="kanban_almacen_menu" parent="almacen_menu" action="action_almacen_kanban" />
 
     <!-- Cliente -->
     <menuitem name="Cliente" id="cliente_menu" parent="main_quintocargo_menu" />

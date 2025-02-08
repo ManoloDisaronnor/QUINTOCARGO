@@ -9,7 +9,7 @@ class Mudanzas(models.Model):
 
     _rec_name = 'cod_mudanza'  # Usar 'cod_mudanza' en lugar del ID en los selectores
 
-    cod_mudanza = fields.Integer('Código de mudanza', required=True)
+    cod_mudanza = fields.Integer('Código de mudanza', required=True, unique=True)
     nombre = fields.Char('Nombre', required=True)
     telefono = fields.Char('Teléfono', required=True)
     fecha_recogida = fields.Datetime('Fecha de recogida', required=True, default=fields.Datetime.now)
@@ -31,21 +31,21 @@ class Mudanzas(models.Model):
     cliente_id = fields.Many2one("quintocargo.cliente",string="Cliente")
     bienes_ids = fields.One2many("quintocargo.bien_asegurado","mudanza_id",string="Bienes")
     
-    @api.onchange('fecha_recogida', 'fecha_entrega')
-    def _onchange_fechas(self):
-        """ Valida las fechas cuando se modifican """
+    @api.constrains('fecha_recogida', 'fecha_entrega')
+    def _check_fechas(self):
+        """ Valida que la fecha de recogida y entrega sean correctas """
         for record in self:
-            if record.fecha_recogida and record.fecha_entrega:
-                if record.fecha_recogida > record.fecha_entrega:
-                    raise ValidationError(
-                        "La fecha de recogida no puede ser posterior a la fecha de entrega. "
-                        "Por favor, verifica las fechas ingresadas."
-                    )
-                if record.fecha_recogida < fields.Datetime.now():
-                    raise ValidationError(
-                        "La fecha de recogida no puede estar en el pasado."
-                    )
-    # Método para borrar mudanza
+            now = fields.Datetime.now()
+            
+            # La fecha de recogida no puede ser anterior a la fecha actual
+            if record.fecha_recogida < now:
+                raise ValidationError("La fecha de recogida no puede estar en el pasado.")
+            
+            # La fecha de entrega no puede ser anterior a la fecha de recogida
+            if record.fecha_entrega < record.fecha_recogida:
+                raise ValidationError("La fecha de entrega no puede ser anterior a la fecha de recogida.")
+        
+    # Método para borrar mudanza SOLO SI ESTA FINALIZADA
     def action_borrar_mudanza(self):
         """ Borrar la mudanza seleccionada """
         for record in self:
@@ -58,3 +58,26 @@ class Mudanzas(models.Model):
         """ Cambiar estado de la mudanza a 'finalizada' """
         for record in self:
             record.write({'estado': 'finalizada'})
+
+    # Método para verificar si el cod_mudanza ya existe y si existe que no permita insertarlo
+    @api.constrains('cod_mudanza')
+    def _check_cod_mudanza(self):
+        for record in self:
+            existing_mudanza = self.search([
+                ('cod_mudanza', '=', record.cod_mudanza),
+                ('id', '!=', record.id)  # Excluye el propio registro si está editando
+            ])
+            if existing_mudanza:
+                raise ValidationError(
+                    "Ya existe una mudanza con el código %s. Por favor, ingrese un código diferente." % record.cod_mudanza
+                )
+
+
+    # Método para verificar que el almacen_id y el cliente_id estén seleccionados
+    @api.constrains('almacen_id', 'cliente_id')
+    def _check_almacen_cliente(self):
+        for record in self:
+            if not record.almacen_id:
+                raise ValidationError("Debe seleccionar un almacén antes de crear la mudanza.")
+            if not record.cliente_id:
+                raise ValidationError("Debe seleccionar un cliente antes de crear la mudanza.")

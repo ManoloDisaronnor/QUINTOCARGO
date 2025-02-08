@@ -5,7 +5,7 @@
         <field name="model">quintocargo.mudanzas</field>
         <field name="arch" type="xml">
             <tree string="Mudanzas">
-                <field name="cod_mudanza" string="Código"/>
+                <field name="cod_mudanza" string="Código" />
                 <field name="nombre" string="Cliente" />
                 <field name="telefono" string="Teléfono" />
                 <field name="direccion_origen" string="Origen" />
@@ -21,6 +21,35 @@
                 <button name="action_finalizar_mudanza" type="object" string="Finalizar"
                     class="oe_highlight" />
             </tree>
+        </field>
+    </record>
+
+    <!-- Filtros para búsqueda de mudanzas -->
+    <record id="quintocargo_mudanzas_search_view" model="ir.ui.view">
+        <field name="name">quintocargo.mudanzas.search</field>
+        <field name="model">quintocargo.mudanzas</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Mudanzas">
+                <field name="cod_mudanza" string="Código" />
+                <field name="nombre" string="Cliente" />
+                <field name="telefono" string="Teléfono" />
+                <field name="direccion_origen" string="Origen" />
+                <field name="direccion_destino" string="Destino" />
+                <field name="fecha_recogida" string="Recogida" />
+                <field name="fecha_entrega" string="Entrega" />
+                <field name="precio" string="Precio" />
+                <field name="estado" string="Estado" />
+                <field name="comentario" string="Comentario" />
+                <!-- Grupo de filtros -->
+                <filter string="Mudanzas Pendientes" name="pendiente"
+                    domain="[('estado', '=', 'pendiente')]" />
+                <filter string="Mudanzas Finalizadas" name="finalizada"
+                    domain="[('estado', '=', 'finalizada')]" />
+                <filter string="Mudanzas En Curso" name="en_curso"
+                    domain="[('estado', '=', 'en_curso')]" />
+                <filter string="Mudanzas Almacenadas" name="almacenadas"
+                    domain="[('estado', '=', 'almacenado')]" />
+            </search>
         </field>
     </record>
 
@@ -110,7 +139,7 @@
                             <field name="cliente_id" />
                         </page>
                         <page string="Empleados Asignados">
-                            <field name="empleado_ids" widget="many2many_tags"/>
+                            <field name="empleado_ids" widget="many2many_tags" />
                         </page>
                         <page string="Bienes Transportados">
                             <field name="bienes_ids">

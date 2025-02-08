@@ -4,13 +4,17 @@
         <field name="name">quintocargo.almacen.form</field>
         <field name="model">quintocargo.almacen</field>
         <field name="arch" type="xml">
-            <tree string="Almacén">
+            <tree string="Almacenes">
                 <field name="nombre" />
                 <field name="direccion" />
                 <field name="capacidad" />
+                <!-- Permite ver en la vista tree una fila para ver las mudanzas activas por almacen -->
+                <field name="mudanzas_ids" string="Mudanzas Activas" widget="many2many_tags" />
+
             </tree>
         </field>
     </record>
+
     <!-- Vista de Formulario  -->
     <record id="quintocargo_almacen_form_view" model="ir.ui.view">
         <field name="name">quintocargo.almacen.form</field>
@@ -37,7 +41,61 @@
         </field>
     </record>
 
-    <!-- Acción de la Vista -->
+    <!-- Vista Kanban -->
+    <record id="quintocargo_almacen_kanban_view" model="ir.ui.view">
+        <field name="name">quintocargo.almacen.kanban</field>
+        <field name="model">quintocargo.almacen</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_card kanban_container shadow-sm rounded p-2"
+                            style="border-left: 5px solid #007bff;">
+                            <div class="kanban_info"
+                                style="overflow: hidden; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong class="d-block text-primary" style="font-size: 16px;">
+                                        <field name="nombre" />
+                                    </strong>
+
+                                    <!-- Detalles adicionales -->
+                                    <div class="text" style="font-size: 15px;">
+                                        <div>
+                                            <label for="direccion">Direccion: </label>
+                                            <field name="direccion" />
+                                        </div>
+                                        <div>
+                                            <label for="capacidad">Capacidad: </label>
+                                            <field name="capacidad" />
+                                        </div>
+                                        <div>
+                                            <label for="mudanzas_ids">Número de mudanzas: </label>
+                                            <field name="mudanzas_ids" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Acción de la vista Kanban -->
+    <record id="action_almacen_kanban" model="ir.actions.act_window">
+        <field name="name">Ver Almacen Kanban</field>
+        <field name="res_model">quintocargo.almacen</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="quintocargo_almacen_kanban_view" />
+        <field name="help" type="html">
+            <p>
+                Visualiza los almacenes en formato Kanban.
+            </p>
+        </field>
+    </record>
+
+    <!-- Acción de la vista Tree -->
     <record id="action_almacen" model="ir.actions.act_window">
         <field name="name">Almacen</field>
         <field name="res_model">quintocargo.almacen</field>
