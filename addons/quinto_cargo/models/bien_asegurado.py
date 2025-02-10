@@ -19,6 +19,12 @@ class bien_asegurado(models.Model):
     dimensiones_Ancho = fields.Float(string='Dimensiones Ancho', required=True)
     dimensiones_Largo = fields.Float(string='Dimensiones Largo', required=True)
     
+    estado = fields.Selection([('pendiente', 'Pendiente'),
+                               ('aprobado', 'Aprobado'),
+                               ('rechazado', 'Rechazado')]
+                              , string='Estado', default='pendiente', required=True)
+
+    
     imagen = fields.Binary(string='Imagen')
     
     volumen = fields.Float(string='Volumen (cm³)', compute='_compute_volumen', store=True)
@@ -60,4 +66,13 @@ class bien_asegurado(models.Model):
         for record in self:
             record.unlink()
         return {'type': 'ir.actions.act_window', 'res_model': 'quintocargo.bien_asegurado', 'view_mode': 'tree'}
+    
+    def action_aprobar(self):
+        for record in self:
+            record.estado = 'aprobado'
+
+    def action_rechazar(self):
+        for record in self:
+            record.estado = 'rechazado'
+
 

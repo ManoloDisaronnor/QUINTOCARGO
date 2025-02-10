@@ -28,6 +28,8 @@
 
         <!-- Datos para Bienes Asegurados -->
         <record id="sofá_antiguo" model="quintocargo.bien_asegurado">
+            <field name="imagen" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Bienes/sofa_antiguo.jpg" />
             <field name="nombre">Sofá Antiguo</field>
             <field name="valor">1500.0</field>
             <field name="tipo_bien">mueble</field>
@@ -38,6 +40,8 @@
         </record>
 
         <record id="tv_oled" model="quintocargo.bien_asegurado">
+            <field name="imagen" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Bienes/tv.jpg" />
             <field name="nombre">TV OLED 85"</field>
             <field name="valor">3500.0</field>
             <field name="tipo_bien">electrodomestico</field>
@@ -48,6 +52,8 @@
         </record>
 
         <record id="cuadro_picasso" model="quintocargo.bien_asegurado">
+            <field name="imagen" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Bienes/cuadro.jpg" />
             <field name="nombre">Cuadro de Picasso</field>
             <field name="valor">250000.0</field>
             <field name="tipo_bien">arte</field>
@@ -58,6 +64,8 @@
         </record>
 
         <record id="armario_roble" model="quintocargo.bien_asegurado">
+            <field name="imagen" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Bienes/armario.jpg" />
             <field name="nombre">Armario de Roble</field>
             <field name="valor">4500.0</field>
             <field name="tipo_bien">mueble</field>
@@ -70,7 +78,8 @@
         <!-- Datos para Clientes -->
         <record id="cliente_manuel" model="quintocargo.cliente">
             <field name="dni">49132318V</field>
-            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Clientes/manuel.png"/>
+            <field name="foto" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Clientes/manuel.png" />
             <field name="nombre">Manuel</field>
             <field name="apellidos">Santos Márquez</field>
             <field name="direccion">Calle Garcilaso de la Vega 15</field>
@@ -83,7 +92,8 @@
 
         <record id="cliente_luis" model="quintocargo.cliente">
             <field name="dni">12822928G</field>
-            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Clientes/luis.png"/>
+            <field name="foto" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Clientes/luis.png" />
             <field name="nombre">Luis</field>
             <field name="apellidos">Martín Gimeo</field>
             <field name="direccion">Calle Palomares 2ºB</field>
@@ -96,7 +106,8 @@
 
         <record id="cliente_pedro" model="quintocargo.cliente">
             <field name="dni">86574512Y</field>
-            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Clientes/pedro.png"/>
+            <field name="foto" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Clientes/pedro.png" />
             <field name="nombre">Pedro Luis</field>
             <field name="apellidos">Linero Arias</field>
             <field name="direccion">Av. España 12</field>
@@ -110,7 +121,8 @@
         <!-- Datos para Empleados -->
         <record id="empleado_juan" model="quintocargo.empleado">
             <field name="dni">87654321B</field>
-            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Empleados/juan.png"/>
+            <field name="foto" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Empleados/juan.png" />
             <field name="nombre">Juan</field>
             <field name="apellidos">Pérez García</field>
             <field name="direccion">Avenida Siempre Viva 742, Springfield</field>
@@ -126,7 +138,8 @@
 
         <record id="empleado_ana" model="quintocargo.empleado">
             <field name="dni">45848875K</field>
-            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Empleados/ana.png"/>
+            <field name="foto" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Empleados/ana.png" />
             <field name="nombre">Ana</field>
             <field name="apellidos">Alonso Hernandez</field>
             <field name="direccion">Calle Serrano 18</field>
@@ -142,7 +155,8 @@
 
         <record id="empleado_ester" model="quintocargo.empleado">
             <field name="dni">42121325F</field>
-            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Empleados/ester.png"/>
+            <field name="foto" type="base64"
+                file="quinto_cargo/static/img/imagenesDemoData/Empleados/ester.png" />
             <field name="nombre">Ester</field>
             <field name="apellidos">Hermenia Martínez</field>
             <field name="direccion">Calle Kiosko 11</field>
@@ -169,10 +183,10 @@
             <field name="precio">1200.0</field>
             <field name="estado">almacenado</field>
             <field name="metros_cubicos_usados">85.0</field>
-            <field name="almacen_id" ref="almacen_central"/>
-            <field name="cliente_id" ref="cliente_manuel"/>
-            <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]"/>
-            <field name="bienes_ids" eval="[(4, ref('sofá_antiguo')), (4, ref('tv_oled'))]"/>
+            <field name="almacen_id" ref="almacen_central" />
+            <field name="cliente_id" ref="cliente_manuel" />
+            <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]" />
+            <field name="bienes_ids" eval="[(4, ref('sofá_antiguo')), (4, ref('tv_oled'))]" />
         </record>
 
         <record id="mudanza_ana" model="quintocargo.mudanzas">
@@ -186,9 +200,9 @@
             <field name="precio">850.0</field>
             <field name="estado">pendiente</field>
             <field name="metros_cubicos_usados">45.0</field>
-            <field name="almacen_id" ref="almacen_norte"/>
-            <field name="cliente_id" ref="cliente_manuel"/>
-            <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]"/>
+            <field name="almacen_id" ref="almacen_norte" />
+            <field name="cliente_id" ref="cliente_manuel" />
+            <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]" />
         </record>
 
 
@@ -209,5 +223,22 @@
             <field name="fecha_compra">2024-01-10</field>
             <field name="fecha_itv">2026-01-10</field>
         </record>
+
+        <record id="transporte_camion2" model="quintocargo.transporte">
+            <field name="matricula">7890GHI</field>
+            <field name="capacidad">2500.0</field>
+            <field name="tipo_vehiculo">camion</field>
+            <field name="fecha_compra">2023-08-15</field>
+            <field name="fecha_itv">2025-08-15</field>
+        </record>
+
+        <record id="transporte_furgoneta2" model="quintocargo.transporte">
+            <field name="matricula">1122JKL</field>
+            <field name="capacidad">1000.0</field>
+            <field name="tipo_vehiculo">furgoneta</field>
+            <field name="fecha_compra">2024-06-05</field>
+            <field name="fecha_itv">2026-06-05</field>
+        </record>
+
     </data>
 </odoo>
