@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Datos para Almacén -->
-    <>
+    <data>
         <!-- Almacenes -->
         <record id="almacen_central" model="quintocargo.almacen">
             <field name="nombre">Almacén Central</field>
