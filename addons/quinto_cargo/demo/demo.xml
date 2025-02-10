@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Datos para Almacén -->
-    <data noupdate="0">
+    <>
         <!-- Almacenes -->
         <record id="almacen_central" model="quintocargo.almacen">
             <field name="nombre">Almacén Central</field>
             <field name="direccion">Calle Mayor 123, Madrid</field>
             <field name="capacidad">500.0</field>
         </record>
-        
+
         <record id="almacen_norte" model="quintocargo.almacen">
             <field name="nombre">Almacén Norte</field>
             <field name="direccion">Avenida Cantabria 45, Santander</field>
             <field name="capacidad">300.0</field>
         </record>
-        
+
         <record id="almacen_sur" model="quintocargo.almacen">
             <field name="nombre">Almacén Sur</field>
             <field name="direccion">Plaza Andalucía 7, Sevilla</field>
             <field name="capacidad">400.0</field>
         </record>
-        
+
         <record id="almacen_este" model="quintocargo.almacen">
             <field name="nombre">Almacén Este</field>
             <field name="direccion">Paseo Marítimo 22, Valencia</field>
             <field name="capacidad">350.0</field>
         </record>
-    </data>
 
-    <!-- Datos para Bienes Asegurados -->
-    <data noupdate="0">
+        <!-- Datos para Bienes Asegurados -->
         <record id="sofá_antiguo" model="quintocargo.bien_asegurado">
             <field name="nombre">Sofá Antiguo</field>
             <field name="valor">1500.0</field>
@@ -39,7 +37,7 @@
             <field name="dimensiones_Ancho">2.4</field>
             <field name="dimensiones_Largo">0.9</field>
         </record>
-        
+
         <record id="tv_oled" model="quintocargo.bien_asegurado">
             <field name="nombre">TV OLED 85"</field>
             <field name="valor">3500.0</field>
@@ -49,7 +47,7 @@
             <field name="dimensiones_Ancho">0.2</field>
             <field name="dimensiones_Largo">1.9</field>
         </record>
-        
+
         <record id="cuadro_picasso" model="quintocargo.bien_asegurado">
             <field name="nombre">Cuadro de Picasso</field>
             <field name="valor">250000.0</field>
@@ -59,7 +57,7 @@
             <field name="dimensiones_Ancho">0.6</field>
             <field name="dimensiones_Largo">0.1</field>
         </record>
-        
+
         <record id="armario_roble" model="quintocargo.bien_asegurado">
             <field name="nombre">Armario de Roble</field>
             <field name="valor">4500.0</field>
@@ -69,68 +67,40 @@
             <field name="dimensiones_Ancho">1.5</field>
             <field name="dimensiones_Largo">0.6</field>
         </record>
-    </data>
 
-    <!-- Datos para Clientes -->
-    <data noupdate="0">
+
+        <!-- Datos para Clientes -->
         <record id="cliente_empresa1" model="quintocargo.cliente">
-            <field name="name">Tech Solutions SL</field>
+            <field name="dni">12345678A</field>
+            <field name="foto"></field>            <!-- Dejamos la etiqueta field para la foto, pero sin imagen -->
+            <field name="nombre">Empresa</field>
+            <field name="apellidos">Ejemplo S.L.</field>
+            <field name="direccion">Calle Falsa 123, Madrid</field>
+            <field name="telefono">912345678</field>
+            <field name="email">empresa@ejemplo.com</field>
+            <field name="fecha_nacimiento">1990-01-01</field>
+            <field name="cuenta_corriente">ES9121000418450200051332</field>
             <field name="tipoCliente">empresa</field>
         </record>
-        
-        <record id="cliente_particular1" model="quintocargo.cliente">
-            <field name="name">Ana García López</field>
-            <field name="tipoCliente">particular</field>
-        </record>
-        
-        <record id="cliente_empresa2" model="quintocargo.cliente">
-            <field name="name">Muebles Modernos SA</field>
-            <field name="tipoCliente">empresa</field>
-        </record>
-        
-        <record id="cliente_particular2" model="quintocargo.cliente">
-            <field name="name">Carlos Martínez Ruiz</field>
-            <field name="tipoCliente">particular</field>
-        </record>
-    </data>
 
-    <!-- Datos para Empleados -->
-    <data noupdate="0">
         <record id="empleado_juan" model="quintocargo.empleado">
-            <field name="name">Juan Pérez</field>
-            <field name="cargo">jefe</field>
-            <field name="fecha_contratacion">2023-01-15</field>
-            <field name="sueldo">2500.0</field>
-            <field name="horas_trabajadas">160.0</field>
-        </record>
-        
-        <record id="empleado_maria" model="quintocargo.empleado">
-            <field name="name">María Gómez</field>
+            <field name="dni">87654321B</field>
+            <field name="foto"></field>            <!-- Dejamos la etiqueta field para la foto, pero sin imagen -->
+            <field name="nombre">Juan</field>
+            <field name="apellidos">Pérez García</field>
+            <field name="direccion">Avenida Siempre Viva 742, Springfield</field>
+            <field name="telefono">623456789</field>
+            <field name="email">juan.perez@ejemplo.com</field>
+            <field name="fecha_nacimiento">1985-05-15</field>
+            <field name="cuenta_corriente">ES7621000418450200051332</field>
             <field name="cargo">empleado</field>
-            <field name="fecha_contratacion">2024-03-01</field>
-            <field name="sueldo">1800.0</field>
-            <field name="horas_trabajadas">120.5</field>
+            <field name="fecha_contratacion">2015-06-01</field>
+            <field name="sueldo">1500.00</field>
+            <field name="horas_trabajadas">160.00</field>
         </record>
-        
-        <record id="empleado_pedro" model="quintocargo.empleado">
-            <field name="name">Pedro Sánchez</field>
-            <field name="cargo">subdirector</field>
-            <field name="fecha_contratacion">2022-06-10</field>
-            <field name="sueldo">3500.0</field>
-            <field name="horas_trabajadas">200.0</field>
-        </record>
-        
-        <record id="empleado_laura" model="quintocargo.empleado">
-            <field name="name">Laura Fernández</field>
-            <field name="cargo">empleado</field>
-            <field name="fecha_contratacion">2023-11-20</field>
-            <field name="sueldo">1900.0</field>
-            <field name="horas_trabajadas">135.0</field>
-        </record>
-    </data>
 
-    <!-- Datos para Mudanzas -->
-    <data noupdate="0">
+        <!-- Datos para Mudanzas -->
+
         <record id="mudanza_tech" model="quintocargo.mudanzas">
             <field name="cod_mudanza">1001</field>
             <field name="nombre">Traslado Oficina Tech</field>
@@ -147,7 +117,7 @@
             <field name="empleado_ids" eval="[(4, ref('empleado_juan')), (4, ref('empleado_maria'))]"/>
             <field name="bienes_ids" eval="[(4, ref('sofá_antiguo')), (4, ref('tv_oled'))]"/>
         </record>
-        
+
         <record id="mudanza_ana" model="quintocargo.mudanzas">
             <field name="cod_mudanza">1002</field>
             <field name="nombre">Mudanza Familiar García</field>
@@ -163,10 +133,10 @@
             <field name="cliente_id" ref="cliente_particular1"/>
             <field name="empleado_ids" eval="[(4, ref('empleado_pedro'))]"/>
         </record>
-    </data>
 
-    <!-- Datos para Transportes -->
-    <data noupdate="0">
+
+        <!-- Datos para Transportes -->
+
         <record id="transporte_camion1" model="quintocargo.transporte">
             <field name="matricula">1234ABC</field>
             <field name="capacidad">2000.0</field>
@@ -174,7 +144,7 @@
             <field name="fecha_compra">2023-05-20</field>
             <field name="fecha_itv">2025-05-20</field>
         </record>
-        
+
         <record id="transporte_furgoneta1" model="quintocargo.transporte">
             <field name="matricula">5678DEF</field>
             <field name="capacidad">800.0</field>
