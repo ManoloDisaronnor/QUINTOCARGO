@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Datos para Almacén -->
     <data>
@@ -76,7 +75,7 @@
             <field name="nombre">Empresa</field>
             <field name="apellidos">Ejemplo S.L.</field>
             <field name="direccion">Calle Falsa 123, Madrid</field>
-            <field name="telefono">912345678</field>
+            <field name="telefono">602242760</field>
             <field name="email">empresa@ejemplo.com</field>
             <field name="fecha_nacimiento">1990-01-01</field>
             <field name="cuenta_corriente">ES9121000418450200051332</field>
@@ -104,9 +103,9 @@
         <record id="mudanza_tech" model="quintocargo.mudanzas">
             <field name="cod_mudanza">1001</field>
             <field name="nombre">Traslado Oficina Tech</field>
-            <field name="telefono">912345678</field>
-            <field name="fecha_recogida">2024-06-01 08:00:00</field>
-            <field name="fecha_entrega">2024-06-05 18:00:00</field>
+            <field name="telefono">645283918</field>
+            <field name="fecha_recogida">2025-02-20</field>
+            <field name="fecha_entrega">2025-03-21</field>
             <field name="direccion_origen">Calle Serrano 45, Madrid</field>
             <field name="direccion_destino">Calle Gran Vía 100, Madrid</field>
             <field name="precio">1200.0</field>
@@ -114,7 +113,7 @@
             <field name="metros_cubicos_usados">85.0</field>
             <field name="almacen_id" ref="almacen_central"/>
             <field name="cliente_id" ref="cliente_empresa1"/>
-            <field name="empleado_ids" eval="[(4, ref('empleado_juan')), (4, ref('empleado_maria'))]"/>
+            <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]"/>
             <field name="bienes_ids" eval="[(4, ref('sofá_antiguo')), (4, ref('tv_oled'))]"/>
         </record>
 
@@ -122,16 +121,16 @@
             <field name="cod_mudanza">1002</field>
             <field name="nombre">Mudanza Familiar García</field>
             <field name="telefono">676543210</field>
-            <field name="fecha_recogida">2024-06-10 09:00:00</field>
-            <field name="fecha_entrega">2024-06-12 17:00:00</field>
+            <field name="fecha_recogida">2025-03-21</field>
+            <field name="fecha_entrega">2025-03-22</field>
             <field name="direccion_origen">Avenida Libertad 3, Barcelona</field>
             <field name="direccion_destino">Calle Rosales 12, Valencia</field>
             <field name="precio">850.0</field>
             <field name="estado">pendiente</field>
             <field name="metros_cubicos_usados">45.0</field>
             <field name="almacen_id" ref="almacen_norte"/>
-            <field name="cliente_id" ref="cliente_particular1"/>
-            <field name="empleado_ids" eval="[(4, ref('empleado_pedro'))]"/>
+            <field name="cliente_id" ref="cliente_empresa1"/>
+            <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]"/>
         </record>
 
 
