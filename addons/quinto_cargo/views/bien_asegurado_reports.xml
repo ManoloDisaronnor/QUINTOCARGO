@@ -1,0 +1,130 @@
+<odoo>
+    <template id="report_bienasegurado_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="bien_asegurado">
+                <t t-call="quinto_cargo.report_layout">
+                    <div class="page">
+                        <h2 class="text-center">Reporte del Bien Asegurado</h2>
+                        <h3>Datos del Bien Asegurado</h3>
+                        <div class="text-center mb-3">
+                            <img t-if="bien_asegurado.imagen" t-att-src="'data:image/png;base64,' + bien_asegurado.imagen.decode('utf-8')" style="max-width: 250px;" />
+                            <p t-if="not bien_asegurado.imagen">
+                                <i>Sin imagen de perfil</i>
+                            </p>
+                        </div>
+                        <h2>Datos Personales</h2>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Nombre del Bien</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.nombre"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Descripción</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.descripcion or 'No especificado'"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Valor</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.valor"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tipo de bien</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.tipo_bien"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Peso</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.peso"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h2>Dimensiones</h2>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Alto</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.dimensiones_Alto"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Ancho</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.dimensiones_Ancho"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Largo</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.dimensiones_Largo"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Volumen</th>
+                                <td>
+                                    <t t-esc="bien_asegurado.volumen"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h2>Mudanzas Asociadas</h2>
+                        <table class="table table-bordered">
+                            <t t-if="bien_asegurado.mudanza_id">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Estado</th>
+                                    <th>Fecha recogida</th>
+                                    <th>Fecha entrega</th>
+                                    <th>Dirección origen</th>
+                                    <th>Dirección destino</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </t>
+                            <t t-foreach="bien_asegurado.mudanza_id" t-as="mudanza">
+                                <tr>
+                                    <td>
+                                        <t t-esc="mudanza.nombre"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.estado"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.fecha_recogida"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.fecha_entrega"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.direccion_origen"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.direccion_destino"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="mudanza.precio"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="not bien_asegurado.mudanza_id">
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        <i>Sin mudanzas registradas</i>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report id="action_report_bien_asegurado" model="quintocargo.bien_asegurado" string="Reporte de Bien Asegurado" report_type="qweb-pdf" name="quinto_cargo.report_bienasegurado_template" file="quinto_cargo.report_bienasegurado_template" print_report_name="'Bien Asegurado - %s' % (object.nombre)" />
+</odoo>

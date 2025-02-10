@@ -33,6 +33,7 @@
         'views/cliente_reports.xml',
         'views/cliente_view.xml',
         'views/empleado_view.xml',
+        'views/bien_asegurado_reports.xml',
         'views/bienes_asegurados_view.xml',
         'views/transporte_view.xml',
         'views/menu_view.xml',
