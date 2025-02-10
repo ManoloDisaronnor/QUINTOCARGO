@@ -19,7 +19,6 @@ class Mudanzas(models.Model):
     precio = fields.Float('Precio', required=True)   
     estado = fields.Selection([
                             ('pendiente', 'Pendiente'),
-                            ('en_curso', 'En curso'),
                             ('almacenado', 'Almacenado'),
                             ('finalizada', 'Finalizada'),], string='Estado', required=True, default='pendiente')
     metros_cubicos_usados = fields.Float('Metros cúbicos usados', required=True)
