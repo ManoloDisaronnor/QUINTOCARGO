@@ -40,7 +40,8 @@
                 <field name="tipo_vehiculo" string="Tipo de vehículo" />
                 <field name="fecha_compra" string="Fecha de compra" />
                 <field name="fecha_itv" string="Fecha de ITV" />
-                <field name="estado_transporte" string="Estado" /> <!-- Añadir estado -->
+                <field name="estado_transporte" string="Estado" />
+                <!-- Añadir estado -->
             </tree>
         </field>
     </record>
@@ -59,6 +60,25 @@
             </graph>
         </field>
     </record>
+
+    <!-- Filtro de busqueda -->
+    <record id="quintocargo_transporte_search_view" model="ir.ui.view">
+        <field name="name">quintocargo.transporte.search</field>
+        <field name="model">quintocargo.transporte</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Transportes">
+                <field name="matricula" string="Matrícula" />
+                <field name="tipo_vehiculo" string="Tipo de Vehículo" />
+                <field name="estado_transporte" string="Estado" />
+                <field name="capacidad" string="Capacidad" />
+
+                <filter name="vehiculos_grandes" string="Capacidad Alta" domain="[('capacidad', 'in', [1001, 2000, 3000, 4000])]"/>
+                <filter name="en_uso" string="En Uso" domain="[('estado_transporte', 'in', ['En uso'])]"/>
+                <filter name="disponible" string="Disponible" domain="[('estado_transporte', 'in', ['disponible'])]"/>
+            </search>
+        </field>
+    </record>
+
 
     <!-- Action para la Vista de Gráfico -->
     <record id="action_transporte_graph" model="ir.actions.act_window">
@@ -79,11 +99,13 @@
         <field name="name">Transportes</field>
         <field name="res_model">quintocargo.transporte</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="quintocargo_transporte_search_view"/>
         <field name="help" type="html">
             <p>
-                Aquí puedes gestionar los transportes de QuintoCargo. Selecciona un transporte para
-                editarlo o crea uno nuevo.
+            Aquí puedes gestionar los transportes de QuintoCargo. Selecciona un transporte para
+            editarlo o crea uno nuevo.
             </p>
         </field>
     </record>
+
 </odoo>

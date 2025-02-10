@@ -53,6 +53,25 @@
         </field>
     </record>
 
+    <!-- Filtro de busqueda -->
+    <record id="quintocargo_bienes_asegurados_search_view" model="ir.ui.view">
+        <field name="name">quintocargo.bien_asegurado.search</field>
+        <field name="model">quintocargo.bien_asegurado</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nombre" string="Nombre" />
+                <field name="tipo_bien" string="Tipo de Bien" />
+                <field name="valor" string="Valor" />
+                <field name="volumen" string="Volumen" />
+                <field name="peso" string="Peso" />
+
+                <filter name="bienes_caros" string="Mayor a 1000 €" domain="[['valor', '&gt;', 1000]]" />
+                <filter name="bienes_livianos" string="Menos de 10 kg" domain="[['peso', '&lt;', 10]]" />
+                <filter name="bienes_grandes" string="Volumen mayor a 1m³" domain="[['volumen', '>', 1]]" />
+            </search>
+        </field>
+    </record>
+
     <!-- Vista Kanban -->
     <record id="quintocargo_bien_asegurado_kanban_view" model="ir.ui.view">
         <field name="name">quintocargo.bien_asegurado.kanban</field>
