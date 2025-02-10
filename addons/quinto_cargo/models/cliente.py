@@ -1,5 +1,6 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 
 class cliente(models.Model):
     _inherit = 'quintocargo.persona'
@@ -25,12 +26,15 @@ class cliente(models.Model):
     # Definir la acción para eliminar un registro en vista Kanban
     def action_delete(self):
         for record in self:
+            # Verificar si existen mudanzas no finalizadas
+            if record.mudanza_ids.filtered(lambda m: m.estado != 'finalizada'):
+                raise UserError(_("No se puede eliminar el cliente porque tiene mudanzas pendientes o almacenadas."))
             record.unlink()
         return {
-        # Para cerrar la ventana emergente y recargar la pagina automaticamente
-        'type': 'ir.actions.client',
-        'tag': 'reload',
-    }
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
+    
 
     # RESTRICCIÓN PARA EVITAR INSERTAR MUDANZAS FINALIZADAS
     @api.onchange('mudanza_ids')

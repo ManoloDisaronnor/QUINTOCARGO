@@ -32,10 +32,21 @@ class empleado(models.Model):
         for record in self:
             record.unlink()
         return {
-        # Para cerrar la ventana emergente y recargar la pagina automaticamente
         'type': 'ir.actions.client',
         'tag': 'reload',
     }
+
+    # Método para ascender de puesto
+    def ascender_cargo(self):
+        for record in self:
+            if record.cargo == 'empleado':
+                record.cargo = 'director'
+            elif record.cargo == 'director':
+                record.cargo = 'subdirector'
+            elif record.cargo == 'subdirector':
+                record.cargo = 'jefe'
+            elif record.cargo == 'jefe':
+                raise ValidationError("El empleado ya tiene el cargo más alto.")
 
     # RESTRICCIÓN PARA EVITAR INSERTAR MUDANZAS FINALIZADAS
     @api.onchange('mudanza_ids')

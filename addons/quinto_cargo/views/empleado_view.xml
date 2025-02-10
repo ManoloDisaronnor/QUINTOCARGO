@@ -82,6 +82,9 @@
                             </field>
                         </page>
                     </notebook>
+                    <footer>
+                        <button string="Ascender de Cargo" type="object" name="ascender_cargo" class="btn-primary"/>
+                    </footer>
                 </sheet>
             </form>
         </field>
