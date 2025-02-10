@@ -67,35 +67,93 @@
             <field name="dimensiones_Largo">0.6</field>
         </record>
 
-
         <!-- Datos para Clientes -->
-        <record id="cliente_empresa1" model="quintocargo.cliente">
-            <field name="dni">12345678A</field>
-            <field name="foto"></field>            <!-- Dejamos la etiqueta field para la foto, pero sin imagen -->
-            <field name="nombre">Empresa</field>
-            <field name="apellidos">Ejemplo S.L.</field>
-            <field name="direccion">Calle Falsa 123, Madrid</field>
+        <record id="cliente_manuel" model="quintocargo.cliente">
+            <field name="dni">49132318V</field>
+            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Clientes/manuel.png"/>
+            <field name="nombre">Manuel</field>
+            <field name="apellidos">Santos Márquez</field>
+            <field name="direccion">Calle Garcilaso de la Vega 15</field>
             <field name="telefono">602242760</field>
-            <field name="email">empresa@ejemplo.com</field>
-            <field name="fecha_nacimiento">1990-01-01</field>
-            <field name="cuenta_corriente">ES9121000418450200051332</field>
+            <field name="email">xmsanmar318@ieshnosmachado.org</field>
+            <field name="fecha_nacimiento">2005-03-17</field>
+            <field name="cuenta_corriente">ES9121005518450520051331</field>
             <field name="tipoCliente">empresa</field>
         </record>
 
+        <record id="cliente_luis" model="quintocargo.cliente">
+            <field name="dni">12822928G</field>
+            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Clientes/luis.png"/>
+            <field name="nombre">Luis</field>
+            <field name="apellidos">Martín Gimeo</field>
+            <field name="direccion">Calle Palomares 2ºB</field>
+            <field name="telefono">625478854</field>
+            <field name="email">lmargim128@ieshnosmachado.org</field>
+            <field name="fecha_nacimiento">1995-09-10</field>
+            <field name="cuenta_corriente">ES9121000318850200012332</field>
+            <field name="tipoCliente">particular</field>
+        </record>
+
+        <record id="cliente_pedro" model="quintocargo.cliente">
+            <field name="dni">86574512Y</field>
+            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Clientes/pedro.png"/>
+            <field name="nombre">Pedro Luis</field>
+            <field name="apellidos">Linero Arias</field>
+            <field name="direccion">Av. España 12</field>
+            <field name="telefono">687759885</field>
+            <field name="email">plinari865@ieshnosmachado.org</field>
+            <field name="fecha_nacimiento">2004-08-15</field>
+            <field name="cuenta_corriente">ES9121000418112200077732</field>
+            <field name="tipoCliente">particular</field>
+        </record>
+
+        <!-- Datos para Empleados -->
         <record id="empleado_juan" model="quintocargo.empleado">
             <field name="dni">87654321B</field>
-            <field name="foto"></field>            <!-- Dejamos la etiqueta field para la foto, pero sin imagen -->
+            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Empleados/juan.png"/>
             <field name="nombre">Juan</field>
             <field name="apellidos">Pérez García</field>
             <field name="direccion">Avenida Siempre Viva 742, Springfield</field>
             <field name="telefono">623456789</field>
-            <field name="email">juan.perez@ejemplo.com</field>
+            <field name="email">juan.perez@gmail.com</field>
             <field name="fecha_nacimiento">1985-05-15</field>
-            <field name="cuenta_corriente">ES7621000418450200051332</field>
+            <field name="cuenta_corriente">ES7621002018450200051442</field>
             <field name="cargo">empleado</field>
             <field name="fecha_contratacion">2015-06-01</field>
             <field name="sueldo">1500.00</field>
             <field name="horas_trabajadas">160.00</field>
+        </record>
+
+        <record id="empleado_ana" model="quintocargo.empleado">
+            <field name="dni">45848875K</field>
+            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Empleados/ana.png"/>
+            <field name="nombre">Ana</field>
+            <field name="apellidos">Alonso Hernandez</field>
+            <field name="direccion">Calle Serrano 18</field>
+            <field name="telefono">634546669</field>
+            <field name="email">anasimon@hotmail.es</field>
+            <field name="fecha_nacimiento">1983-02-22</field>
+            <field name="cuenta_corriente">ES7621000418220200451331</field>
+            <field name="cargo">director</field>
+            <field name="fecha_contratacion">2012-07-11</field>
+            <field name="sueldo">2100.00</field>
+            <field name="horas_trabajadas">120.00</field>
+        </record>
+
+        <record id="empleado_ester" model="quintocargo.empleado">
+            <field name="dni">42121325F</field>
+            <field name="foto" type="base64" file="quinto_cargo/static/img/imagenesDemoData/Empleados/ester.png"/>
+            <field name="nombre">Ester</field>
+            <field name="apellidos">Hermenia Martínez</field>
+            <field name="direccion">Calle Kiosko 11</field>
+            <field name="telefono">722145680</field>
+            <field name="email">esterhermenia@gmail.com</field>
+            <field name="fecha_nacimiento">1973-02-22</field>
+            <field name="cuenta_corriente">ES7621230418454500051122</field>
+            <field name="cargo">jefe</field>
+            <field name="fecha_contratacion">1999-02-01</field>
+            <field name="sueldo">3950.00</field>
+            <field name="horas_trabajadas">180.00</field>
         </record>
 
         <!-- Datos para Mudanzas -->
@@ -112,7 +170,7 @@
             <field name="estado">almacenado</field>
             <field name="metros_cubicos_usados">85.0</field>
             <field name="almacen_id" ref="almacen_central"/>
-            <field name="cliente_id" ref="cliente_empresa1"/>
+            <field name="cliente_id" ref="cliente_manuel"/>
             <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]"/>
             <field name="bienes_ids" eval="[(4, ref('sofá_antiguo')), (4, ref('tv_oled'))]"/>
         </record>
@@ -129,7 +187,7 @@
             <field name="estado">pendiente</field>
             <field name="metros_cubicos_usados">45.0</field>
             <field name="almacen_id" ref="almacen_norte"/>
-            <field name="cliente_id" ref="cliente_empresa1"/>
+            <field name="cliente_id" ref="cliente_manuel"/>
             <field name="empleado_ids" eval="[(4, ref('empleado_juan'))]"/>
         </record>
 

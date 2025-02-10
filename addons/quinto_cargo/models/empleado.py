@@ -14,7 +14,13 @@ class empleado(models.Model):
     fecha_contratacion = fields.Date('Fecha de contratación', required=True)
     sueldo = fields.Float('Sueldo', required=True, digits = (10,2))
     horas_trabajadas = fields.Float('Horas trabajadas', required=True, digits = (5,2))
-    mudanza_ids = fields.Many2many("quintocargo.mudanzas", "empleado_id", string="Mudanzas")
+    mudanza_ids = fields.Many2many(
+    "quintocargo.mudanzas",
+    "mudanza_empleado_rel",
+    "empleado_id",
+    "mudanza_id",
+    string="Mudanzas"
+)
 
     # Definir la acción para abrir la vista de formulario en vista Kanban
     def action_open(self):

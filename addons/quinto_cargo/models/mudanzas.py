@@ -26,7 +26,7 @@ class Mudanzas(models.Model):
 
     # Relación con el modelo almacen
     almacen_id = fields.Many2one("quintocargo.almacen",string="Almacen")
-    empleado_ids = fields.Many2many("quintocargo.empleado",string="Empleados asignados")
+    empleado_ids = fields.Many2many("quintocargo.empleado", "mudanza_empleado_rel", "mudanza_id", "empleado_id", string="Empleados asignados")
     cliente_id = fields.Many2one("quintocargo.cliente",string="Cliente")
     bienes_ids = fields.One2many("quintocargo.bien_asegurado","mudanza_id",string="Bienes")
     
