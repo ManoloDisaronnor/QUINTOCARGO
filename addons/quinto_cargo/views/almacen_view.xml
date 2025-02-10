@@ -1,16 +1,15 @@
 <odoo>
     <!-- Vista de Lista -->
     <record id="quintocargo_almacen_tree_view" model="ir.ui.view">
-        <field name="name">quintocargo.almacen.form</field>
+        <field name="name">quintocargo.almacen.tree</field>
         <field name="model">quintocargo.almacen</field>
         <field name="arch" type="xml">
             <tree string="Almacenes">
                 <field name="nombre" />
                 <field name="direccion" />
                 <field name="capacidad" />
-                <!-- Permite ver en la vista tree una fila para ver las mudanzas activas por almacen -->
+                <field name="capacidad_disponible" />  <!-- Nuevo campo -->
                 <field name="mudanzas_ids" string="Mudanzas Activas" widget="many2many_tags" />
-
             </tree>
         </field>
     </record>
@@ -26,6 +25,7 @@
                         <field name="nombre" />
                         <field name="direccion" />
                         <field name="capacidad" />
+                        <field name="capacidad_disponible" readonly="1" />  <!-- Nuevo campo -->
                     </group>
                     <notebook>
                         <page string="Mudanzas">
@@ -61,12 +61,16 @@
                                     <!-- Detalles adicionales -->
                                     <div class="text" style="font-size: 15px;">
                                         <div>
-                                            <label for="direccion">Direccion: </label>
+                                            <label for="direccion">Dirección: </label>
                                             <field name="direccion" />
                                         </div>
                                         <div>
                                             <label for="capacidad">Capacidad: </label>
                                             <field name="capacidad" />
+                                        </div>
+                                        <div>
+                                            <label for="capacidad_disponible">Disponible: </label>
+                                            <field name="capacidad_disponible" />
                                         </div>
                                         <div>
                                             <label for="mudanzas_ids">Número de mudanzas: </label>
