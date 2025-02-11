@@ -19,12 +19,6 @@ class bien_asegurado(models.Model):
     dimensiones_Ancho = fields.Float(string='Dimensiones Ancho', required=True)
     dimensiones_Largo = fields.Float(string='Dimensiones Largo', required=True)
     
-    estado = fields.Selection([('pendiente', 'Pendiente'),
-                               ('aprobado', 'Aprobado'),
-                               ('rechazado', 'Rechazado')]
-                              , string='Estado', default='pendiente', required=True)
-
-    
     imagen = fields.Binary(string='Imagen')
     
     volumen = fields.Float(string='Volumen (cm³)', compute='_compute_volumen', store=True)
@@ -52,6 +46,7 @@ class bien_asegurado(models.Model):
                 raise ValidationError("Asegúrate de que todos los valores numéricos son correctos.")
 
     @api.depends('dimensiones_Alto', 'dimensiones_Ancho', 'dimensiones_Largo')
+    # Método para calcular el volumen
     def _compute_volumen(self):
         for record in self:
             try:
@@ -62,17 +57,19 @@ class bien_asegurado(models.Model):
             except (ValueError, TypeError):
                 record.volumen = 0.0
 
+   # Método para borrar bien asegurado
     def action_delete(self):
         for record in self:
             record.unlink()
         return {'type': 'ir.actions.act_window', 'res_model': 'quintocargo.bien_asegurado', 'view_mode': 'tree'}
     
-    def action_aprobar(self):
-        for record in self:
-            record.estado = 'aprobado'
 
-    def action_rechazar(self):
-        for record in self:
-            record.estado = 'rechazado'
 
+    # Método para asignar una mudanza solo si la mudanza no está finalizada
+    def action_asignar_mudanza(self):
+        for record in self:
+            if record.mudanza_id.estado == 'finalizada':
+                raise ValidationError("No puedes asignar un bien a una mudanza que ya está finalizada.")
+            record.estado = 'en_proceso'  # Cambia el estado
+            return {'type': 'ir.actions.act_window', 'res_model': 'quintocargo.bien_asegurado', 'view_mode': 'form', 'res_id': record.id}
 
