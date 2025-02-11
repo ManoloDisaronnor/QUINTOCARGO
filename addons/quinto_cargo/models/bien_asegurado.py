@@ -70,6 +70,5 @@ class bien_asegurado(models.Model):
         for record in self:
             if record.mudanza_id.estado == 'finalizada':
                 raise ValidationError("No puedes asignar un bien a una mudanza que ya está finalizada.")
-            record.estado = 'en_proceso'  # Cambia el estado
             return {'type': 'ir.actions.act_window', 'res_model': 'quintocargo.bien_asegurado', 'view_mode': 'form', 'res_id': record.id}
 
